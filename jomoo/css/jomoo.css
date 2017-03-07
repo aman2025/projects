@@ -1,0 +1,633 @@
+@charset "utf-8";
+body, html {
+	color: #B1CEFA;
+	font-family: tahoma, 'Microsoft yahei', 'Hiragino Sans GB', 'Hiragino Sans GB W3', HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased
+}
+html {
+	font-size:16px;
+	height:100%;
+}
+body {
+  background-color: #040C1D;
+  background-image: url(../images/bg.png);
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 100%;
+  height:100%;
+  text-align:center;
+  font-size: 50px;
+}
+body,div,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td,a {
+    margin: 0;
+    padding: 0;
+		-webkit-box-sizing: border-box;
+		        box-sizing: border-box
+}
+li {
+	list-style: none;
+	-webkit-tap-highlight-color:transparent; 
+  -webkit-user-select:none; 
+}
+a {
+  color:#fff;
+  text-decoration: none;
+  background-color: transparent;
+	-webkit-tap-highlight-color:transparent; /*解决Safari 点击时 标签文本被选中，有底色*/
+    -webkit-user-select:none; 
+}
+a:active,
+a:hover{
+  outline: 0;
+	text-decoration:none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+img {
+  max-width: 100% !important;
+	vertical-align: middle;
+	border: 0;
+}
+.img-circle{
+	border-radius:50%;
+}
+.pull-left{
+	float:left;	
+}
+.pull-right{
+	float:right;	
+}
+.text-right{
+	text-align:right;
+}
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+
+/*表单*/
+input,
+button,
+textarea{
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  -webkit-appearance: none; 
+  background-color: transparent;
+	-webkit-tap-highlight-color:transparent; /*点击时标签不加亮，没背景色*/
+    -webkit-user-select:none; 
+}
+button{
+	border:none;
+	overflow:visible;	
+}
+.bg-person,
+.guide,
+.login li a,
+.login li button,
+.category,
+.btn-password,
+.btn-back,
+.btn-share,
+.sologan3,
+.sologan2,
+.sprinkler,
+.btn-user,
+.btn-price,
+.intro-video,
+.skew-line,
+.person,
+.rain,
+.device,
+.bg-blue,
+.btn-view,
+.circle-single,
+.circle-single span,
+.avatar span,
+.avatar,
+.shake,
+.sologan,
+.logo,
+.btn-open,
+.circle,
+.coupon-wrap,
+.coupon-cion,
+.btn-coupon,
+.coupon-device,
+.btn-more,
+.btn-service,
+.coupon-code,
+.btn-shake{
+	background-repeat: no-repeat !important;
+	background-position: center center;
+	background-size: 100%  !important;
+}
+/*标语*/
+.main{
+	width:16.25rem;
+	margin:0 auto;
+}
+.sologan{
+	height:6.25rem;
+	background-image: url(../images/sologan.png);
+}
+.blank-solo{
+	height:4.5rem;
+}
+.blank{
+	height:1rem;
+}
+.solo-text{
+	font-size:1rem;
+	padding:.5rem 0 0;
+	text-align:center;
+	line-height:1.4
+}
+.solo-text b{
+	display:block
+}
+
+.solo-line{
+	width:2rem;
+	height:3px;
+	background:#A2C3E7;
+	margin:2rem auto 0;
+}
+.logo{
+	width:11rem;
+	height:1.5rem;
+	background-image: url(../images/logo.png);
+	margin:2rem auto 0;
+}
+
+.btn-open{
+	width:7.2rem;
+	height:2.06rem;
+	background-image: url(../images/btn-open.png);
+	margin:4.25rem auto 0;
+}
+
+/*3达人*/
+.blank3{
+	height:2.5rem;
+}
+.circle{
+	position:relative;
+	width:12.5rem;
+	height:12.5rem;
+	background-image: url(../images/circle.png);
+	margin:0 auto;
+}
+
+.btn-shake{
+	width:12rem;
+	height:5rem;
+	background-image: url(../images/btn-shake.png);
+	margin:3rem auto 0;
+}
+.shake{
+	width:4rem;
+	height:4rem;
+	background-image: url(../images/shake.png);
+	margin:1.5rem auto 0;
+}
+.avatar{
+	position:absolute;
+	width:5rem;
+	height:5rem;
+	padding:0.8rem;
+	background-image: url(../images/circle-avatar.png);
+		-webkit-box-sizing: content-box;
+		        box-sizing: content-box
+}
+.avatar span{
+	height:100%;
+	width:100%;
+	display:block;
+	border-radius:50%;
+}
+.avatar.s01{
+	width:4rem;
+	height:4rem;
+	top:3.5rem;
+	left:-1.5rem;
+	padding:0.6rem;
+}
+.avatar.s02{
+	width:3rem;
+	height:3rem;
+	top:0.45rem;
+	left:8.1rem;
+	padding:0.5rem;
+}
+.avatar.s03{
+	width:5rem;
+	height:5rem;
+	top:7.5rem;
+	left:6rem;
+}
+
+
+/*4达人头像*/
+.blank4{
+	height:5.25rem;
+}
+.circle.sm{
+	width:10rem;
+	height:10rem;
+}
+.circle.sm .avatar.s00{
+	width:7rem;
+	height:7rem;
+	top:0.25rem;
+	left:0.37rem;
+	padding:1.1rem;
+}
+.info{
+	color:#fff;
+	line-height:1.4;
+	font-size:1.125rem;
+	margin:0.5rem 0 0;
+}
+.btn-view{
+	width:9.75rem;
+	height:2.1875rem;
+	background-image: url(../images/btn-view.png);
+	margin:3.3rem auto 0;
+}
+
+/*6达人详情*/
+.blank6{
+	height:3.6rem;
+}
+.blank6-lg{
+	height:12.1rem;
+}
+.bg-blue{
+	background-image: url(../images/bg-blue.png);
+	height:100%;
+	background-position: right top;
+}
+.bg-person{
+	height:100%;
+	background-position: center top;
+}
+.device{
+	background-image: url(../images/device.png);
+	height:100%;
+	background-position: left top;
+}
+.skew-line{
+	background-image: url(../images/skew-line.png);
+	height:100%;
+	background-position: left top;
+}
+.rain{
+	background-image: url(../images/rain.png);
+	height:100%;
+	background-position: left 2.4rem;
+}
+.person{
+	position:absolute;
+	top:3.6rem;
+	bottom:0;
+	left:0;
+	right:0;
+	background-position: left top;
+}
+.intro-text{
+	width:8.5rem;
+	position:absolute;
+	top:1rem;
+	right:0.2rem;
+	color:#fff;
+	font-size:0.75rem;
+	text-align:center;
+	line-height:1.5
+}
+.intro-text label{
+	font-size:1rem;
+	color:#00D2FF;
+}
+.intro-video{
+	border:2px solid #fff;
+	width:11rem;
+	height:6rem;
+	margin:0 auto;
+	background-color:rgba(255,255,255,0.6);
+	-webkit-box-sizing: content-box;
+					box-sizing: content-box
+}
+.intro-video video{
+	width:176px;
+	height:96px;
+  margin:0;
+	padding:0;
+}
+.video-title{
+	margin:10px 0 0;
+	color:#fff;
+	font-size: 16px;
+}
+.btn-wrap{
+	text-align:center;
+	margin:1.5rem 0 0;
+}
+.btn-price{
+	display:inline-block;
+	width:6.85rem;
+	height:2rem;
+	margin:0 0.2rem;
+	background-image: url(../images/btn-price.png);
+}
+.btn-user{
+	display:inline-block;
+	width:6.85rem;
+	height:2rem;
+	margin:0 0.2rem;
+	background-image: url(../images/btn-user.png);
+}
+.logo.leftBottom{
+	margin:0.3rem 0 0;
+	width:8.2rem;
+	background-position:left center
+}
+
+/*7-1一起来砍价*/
+.blank7{
+	height:2rem;
+}
+
+.sprinkler{
+	width:10.53rem;
+	height:4.69rem;
+	background-image: url(../images/sprinkler.png);
+	margin:0 auto;
+}
+.sologan2{
+	position:absolute;
+	width:11rem;
+	height:1.5rem;
+	top:-0.5rem;
+	left:1rem;
+	background-image: url(../images/sologan2.png);
+}
+.sologan3{
+	position:absolute;
+	width:15rem;
+	height:4rem;
+	top:1rem;
+	left:-1.2rem;
+	background-image: url(../images/sologan3.png);
+}
+.rule-wrap{
+	position:absolute;
+	top:5rem;
+	left:-1.5rem;
+	width:16rem;
+}
+.rule-title{
+	padding:0.3rem;
+	border:1px solid #b1cefa;
+	border-radius:0.2rem;
+	width:4.5rem;
+	margin:0.5rem 0 0.5rem;
+	font-size:0.6rem
+}
+.rule-info{
+	font-size:0.7rem;
+	text-align:left;
+	line-height:1.8;
+}
+.rule-info label{
+	color:#fff
+}
+.btn-share{
+	width:5rem;
+	height:5rem;
+	background-image: url(../images/btn-share.png);
+	margin:3.5rem auto 0;
+	color:#fff;
+	text-align:center;
+	padding:3rem 0 0;
+	font-size: 16px;
+}
+
+/*8-1点击去领取*/
+.blank8{
+	height:3rem;
+}
+.coupon-wrap{
+	width:15.5rem;
+	height:20rem;
+	border-radius:0.5rem;
+	background-color:rgba(39,92,165,0.66);
+	background-image: url(../images/coupon.png);
+	background-position: center 1rem;
+	margin:0 auto;
+	padding:2.8rem 0 0;
+}
+.coupon-wrap.pt0{
+	padding-top:0;
+}
+.coupon-cion{
+	width:10.25rem;
+	height:5.5rem;
+	color:#fff;
+	font-size:2.5rem;
+	background-image: url(../images/coupon-cion.png);
+	margin:0 auto;
+	padding:1.2rem 0 0 1.2rem;
+}
+.coupon{
+	line-height:1.6;
+	color:#fff;
+	text-align:center
+}
+.coupon h1{
+	font-size:1.2rem;
+}
+.coupon label{
+	color:#ffbb02;
+	font-size:1.6rem;
+}
+.btn-coupon{
+	display:inline-block;
+	width:6.43rem;
+	height:2.4rem;
+	background-image: url(../images/btn-coupon.png);
+	margin:.3rem auto 0;
+}
+.coupon-device{
+	height:100%;
+	background-image: url(../images/coupon-device.png);
+	background-position: center 0.5rem;
+}
+.btn-wrap2{
+	text-align:center;
+	padding:9.6rem 0 0;
+}
+.mt0{
+	margin-top:0 !important;
+}
+.btn-more{
+	display:inline-block;
+	width:6.43rem;
+	height:2.4rem;
+	margin:0 0.2rem;
+	background-image: url(../images/btn-more.png);
+}
+.btn-coupon10{
+	display:inline-block;
+	width:6.43rem;
+	height:2.4rem;
+	margin:0 0.2rem;
+	background-image: url(../images/btn-coupon10.png);
+}
+.btn-service{
+	display:inline-block;
+	width:6.43rem;
+	height:2.4rem;
+	margin:0 0.2rem;
+	background-image: url(../images/btn-service.png);
+}
+.coupon-code{
+	width:15rem;
+	height:2.5rem;
+	color:#000;
+	padding:0.5rem 0 0 3rem;
+	font-size:1.25rem;
+	background-image: url(../images/coupon-code.png);
+	margin:1rem auto 0;
+}
+.coupon-info{
+	width:15rem;
+	padding:0.5rem 1.5rem;
+	font-size:0.7rem;
+	color:#fff;
+	text-align:center;
+	font-size:1.4
+}
+
+/*10-2 十万种可能*/
+.category{
+	width:100%;
+  height:23rem;
+	background-image: url(../images/pic.png);
+	background-position: center top;
+	background-size:contain;
+	margin-bottom:1rem;
+}
+
+.btn-password{
+	background-image: url(../images/btn-password.png);
+}
+.btn-back{
+	background-image: url(../images/btn-back.png);
+}
+.btn-back,
+.btn-password{
+	display:inline-block;
+	width:6.5rem;
+	height:1.875rem;
+	margin:0 0.5rem;
+}
+
+
+.btn-coupon,
+.btn-share,
+.btn-view,
+.btn-shake,
+.btn-open{
+	display:inline-block;
+	border:none;
+}
+@media screen and (min-width: 360px) {
+	html {
+		font-size:20px;
+	}
+	.intro-video video{
+		width:220px;
+		height:120px;
+	}
+}
+
+/*update 10-29 */
+
+.main-login{
+	width:12.9rem;
+	margin:0 auto;
+}
+.login{
+	clear:both;
+	padding:1.6rem 0 0;
+}
+.login li{
+	clear:both;
+	padding:0.3rem 0;
+}
+.login li:first-child input[type=number]{
+	width:100%;
+}
+.login li input[type=number]{
+	height:2.156rem;
+	background:#fff;
+	border-radius:0.36rem;
+	border:none;
+	padding:0 0.5rem;
+	-webkit-box-sizing: border-box;
+					box-sizing: border-box;
+}
+.login li:nth-child(2){
+	display:-webkit-box;
+}
+.login li:nth-child(2) input[type=number]{
+-webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    display: block; /*这个属性要加实现了width：100%*/}
+
+.login li:nth-child(2) button{
+	-webkit-box-flex: 0;
+	-webkit-flex: 0;
+	flex: 0;
+	display: block;
+	width: 5.5rem;
+	height:2.156rem;
+	margin:0 0 0 0.3125rem;
+	border:none;
+	background-image: url(../images/getCode.png);
+}
+.login li a{
+	display:block;
+	height:2.156rem;
+	width:13rem;
+	background-image: url(../images/btn-login.png);
+}
+.guide{
+	width:100%;
+	height:13rem;
+	margin:0 auto;
+	background-image: url(../images/share-guide.png);
+}
+.guide-text{
+	color:#fff;
+	line-height:1.8;
+	font-size:1rem;
+	text-align:center;
+	margin-top:0.5rem;
+	letter-spacing:0.2rem;
+}
+.guide-text a{
+	color:#fff;
+}

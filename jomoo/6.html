@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>index</title>
+<link rel="stylesheet" href="css/jomoo.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script>
+$(function(){
+	
+})
+</script>
+<style>
+body{
+  min-height:580px
+}
+/*按钮*/
+.btn-user,
+.btn-price{
+	position:relative
+}
+.btn-user:after,
+.btn-price:after{
+	content:" ";
+	display:block;
+	position:absolute;
+	top:.06rem;
+	left:.05rem;
+	width: 6.85rem;
+	height: 2rem;
+  box-shadow: 0px 0px 18px 0px rgba(77, 161, 255, 0.8);
+	-webkit-animation:shine 1.5s infinite alternate ease-in-out;
+}
+@-webkit-keyframes shine{
+0% { 
+   box-shadow: 0px 0px 13px 0px rgba(77, 161, 255, 0.2);
+} 
+50% {  
+   box-shadow: 0px 0px 13px 0px rgba(77, 161, 255, 1.0);
+}
+100% {  
+   box-shadow: 0px 0px 13px 0px rgba(77, 161, 255, 0.2);
+}
+}
+
+/*斜线运动*/
+.rain2{
+	width:75px;
+	height:75px;
+	position:absolute;
+	top:2.2rem;
+	left:8.8rem;
+}
+.rain2 i{
+	position:absolute;
+	display:block;
+  width:14px;
+	height:29px;
+	background-image:url(images/rainline.png);
+	background-repeat:no-repeat;
+	background-size:100%;
+	color:#fff;
+}
+.rain2 i:nth-child(1){
+	top:25px;
+	left:-55px;
+	-webkit-animation: skewdrop 2s infinite linear 0.2s backwards;
+}
+.rain2 i:nth-child(2){
+	top:5px;
+	left:-45px;
+  width:8x;
+	height:16px;
+	-webkit-animation: skewdrop 1.8s infinite linear 0.5s backwards; /*延迟0.5秒,从结束状态开始;forwards是从开始状态*/
+}
+.rain2 i:nth-child(3){
+	top:15px;
+	left:-25px;
+  width:8x;
+	height:16px;
+	-webkit-animation: skewdrop 1.8s infinite linear 0.2s backwards;
+}
+.rain2 i:nth-child(4){
+	top:0px;
+	left:-15px;
+	-webkit-animation: skewdrop 2s infinite linear 0.3s backwards;
+}
+.rain2 i:nth-child(5){
+	top:0px;
+	left:-40px;
+  width:8x;
+	height:16px;
+	-webkit-animation: skewdrop 1.5s infinite linear 0.2s backwards;
+}
+
+/*动画*/
+@-webkit-keyframes skewdrop {
+	0% { -webkit-transform:translate3d(0,0,0); opacity:1 }
+	30% { -webkit-transform:translate3d(14px,29px,0); opacity:.5 }
+	60% {-webkit-transform:translate3d(28px,58px,0);  opacity:.3}
+	100% { -webkit-transform:translate3d(56px,116px,0);  opacity:0 }
+}
+/*斜线运动*/
+.rain{
+	position:absolute;
+	display:block;
+  width:99px;
+	height:99px;
+	background-image:url(images/line2.png);
+	background-repeat:no-repeat;
+	background-size:100%;
+	color:#fff;
+}
+.rain.r01{
+	top:-5px;
+	right:10px;
+}
+.rain.r02{
+	width:80px;
+	height:80px;
+	top:197px;
+	right:20px;
+}
+.rain.r03{
+	top:225px;
+	left:-40px;
+	width:140px;
+	height:140px;
+}
+.rain.r04{
+	top:-50px;
+	left:-10px;
+	width:125px;
+	height:125px;
+}
+
+</style>
+</head>
+<body>
+<div class="bg-blue">
+	<div class="bg-person"  style="background-image:url(images/person2.png)">
+  	<div class="skew-line">
+      <div class="blank6"></div>
+      <div class="blank6-lg"></div>
+      <div class="intro-video">
+ 				<video controls preload="auto" poster="" src="images/show.mp4"></video>
+      </div>
+      <div class="video-title">点击回看视频</div>
+      <div class="btn-wrap">
+        <a href="7-1.html" class="btn-price"></a>
+        <a href="3.html" class="btn-user"></a>
+      </div>
+      <div class="logo leftBottom"></div>
+    </div>
+  </div>  
+</div>
+<!--雨滴-->
+<div class="rain2">
+  <i></i>
+  <i></i>
+  <i></i>
+  <i></i>
+  <i></i>
+</div>
+
+<i class="rain r04"></i>
+</body>
+</html>

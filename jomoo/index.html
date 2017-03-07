@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>index</title>
+<link rel="stylesheet" href="css/jomoo.css"> 
+<script src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	 var flag = 0;
+	 $("#audio_btn").click(function(){
+		  if(flag == 1){
+					$(this).addClass("rotate");
+					$("#media").play()
+					flag = 0;
+			}else{
+					$(this).removeClass("rotate")
+					$("#media").pause()
+					flag = 1;
+			}	 
+	 })
+});
+</script>
+ 
+<style>
+
+.btn-open{
+	position:relative
+}
+.btn-open:after{
+	content:" ";
+	display:block;
+	position:absolute;
+	top:-0.05rem;
+	left:-0.02rem;
+	width: 7.120rem;
+	height: 2.05rem;
+  box-shadow: 0px 0px 5px 0px rgba(77, 161, 255, 0.8);
+	border:1px solid #1281F5;
+	border-radius:3px;
+	-webkit-animation:shine 1.5s infinite alternate ease-in-out;
+}
+@-webkit-keyframes shine{
+0% { 
+   box-shadow: 0px 0px 11px 0px rgba(77, 161, 255, 0.2);
+	 border-color:rgba(18,129,245,0.2)
+} 
+50% {  
+   box-shadow: 0px 0px 11px 0px rgba(77, 161, 255, 1.0);
+	 border-color:rgba(18,129,245,1.0)
+}
+100% {  
+   box-shadow: 0px 0px 11px 0px rgba(77, 161, 255, 0.2);
+	 border-color:rgba(18,129,245,0.2)
+}
+}
+
+/*logo滑入*/
+.logo{
+	-webkit-animation:rollin 1s linear;
+}
+@-webkit-keyframes rollin{
+	0% { -webkit-transform:translateX(150%);}
+	100%{-webkit-transform:translateX(0);}
+}
+.main{
+  min-height:31.5rem
+}
+
+/*音频*/
+#start{
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	z-index: 200;
+	width: 30px;
+	height: 30px;
+	display:block;
+}
+.off {
+    background-image: url(images/normalmusic.svg);
+    background-size: contain;
+}
+.rotate {
+    -webkit-animation: rotating 1.2s linear infinite;
+}
+@-webkit-keyframes rotating{
+ from {-webkit-transform: rotate(0deg);}
+ to {-webkit-transform: rotate(360deg);}
+}
+
+/*斜线运动*/
+.rain{
+	position:absolute;
+	display:block;
+  width:99px;
+	height:99px;
+	background-image:url(images/line2.png);
+	background-repeat:no-repeat;
+	background-size:100%;
+	color:#fff;
+}
+.rain.r01{
+	top:-5px;
+	right:10px;
+	-webkit-animation: skewdrop 3s infinite linear;
+}
+.rain.r02{
+	width:80px;
+	height:80px;
+	top:197px;
+	right:20px;
+	-webkit-animation: skewdrop 6s infinite linear 0.5s backwards; /*延迟0.5秒,从结束状态开始;forwards是从开始状*/
+}
+.rain.r03{
+	top:225px;
+	left:-40px;
+	width:140px;
+	height:140px;
+	-webkit-animation: skewdrop 5s infinite linear 0.5s backwards; 
+}
+.rain.r04{
+	top:-50px;
+	left:-10px;
+	width:125px;
+	height:125px;
+	-webkit-animation: skewdrop 3s infinite linear 2.0s backwards; 
+}
+@-webkit-keyframes skewdrop {
+	/*唯一是w，h的倍数*/
+	0% { -webkit-transform:translate3d(0,0,0);opacity:0.8}
+	30% { -webkit-transform:translate3d(-99px,99px,0); opacity:1.0 }
+	60% {-webkit-transform:translate3d(-198px,198px,0); opacity:.9}
+	100% { -webkit-transform:translate3d(-297px,297px,0); opacity:.7}
+}
+
+</style>
+</head>
+<body>
+<div class="main">
+	<div class="blank-solo"></div>
+	<div class="sologan"></div>
+	<div class="solo-text">
+		3位达人邀您开启<b>#浴室的十万种可能#</b>
+	</div>
+	<div class="solo-line"></div>
+	<div class="logo"></div>
+	<a href="login.html" class="btn-open"></a>
+	<div class="blank"></div>
+</div>
+
+<!--音频-->
+<span href="#" id="start"  class="off rotate"></span>
+<audio loop src="images/CountingStars.mp3" id="music" autoplay preload=""></audio>
+<script>
+$(function(){
+	var flag = 0;
+	$("#start").click(function(){
+		if(flag==0){
+			$(this).removeClass("rotate");
+			$("#music")[0].pause();
+			flag=1;
+		}else{
+			$("#music")[0].play();
+			$(this).addClass("rotate");
+			flag=0;
+		}
+		
+	})	
+})
+</script>
+<!--斜线运动-->
+<i class="rain r01"></i>
+<i class="rain r02"></i>
+<i class="rain r03"></i>
+<i class="rain r04"></i>
+
+</body>
+</html>

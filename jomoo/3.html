@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>index</title>
+<link rel="stylesheet" href="css/jomoo.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script>
+$(function(){
+ 	var arrNum = createRandom(3,0,2)//生成3个从0-2之间不重复的随机数
+		$("#avatar span").eq(0).css("background-image","url(images/avatar" + arrNum[0] + ".jpg)");
+		$("#avatar span").eq(1).css("background-image","url(images/avatar" + arrNum[1] + ".jpg)");
+		$("#avatar span").eq(2).css("background-image","url(images/avatar" + arrNum[2] + ".jpg)");
+})
+/*
+num 要产生多少个随机数
+from 产生随机数的最小值
+to 产生随机数的最大值
+*/
+function createRandom(num ,from ,to )
+{
+    var arr=[];
+    for(var i=from;i<=to;i++)
+        arr.push(i);
+    arr.sort(function(){
+        return 0.5-Math.random();
+    });
+    arr.length=num;
+    return arr;
+}
+	alert(arrNum)
+</script>
+
+<style>
+.circle-wrap{
+  position:relative;
+	text-align:center;
+}
+.shake{
+	-webkit-animation:shake 1s infinite alternate ease-in-out;
+}
+@-webkit-keyframes shake{
+	0% { 
+		-webkit-transform: rotate(0deg);
+	}
+	33% {  
+		-webkit-transform: rotate(-15deg);
+	}
+	66% {  
+		-webkit-transform: rotate(15deg);
+	}
+	100% {  
+		-webkit-transform: rotate(0deg);
+	}
+}
+
+/*线圈旋转*/
+.avatarFix{
+	width: 12.5rem;
+	height:12.5rem;
+	position:absolute;
+	top:0;
+	left:50%;
+	margin:0 0 0 -6.25rem;
+}
+
+.circle{
+ -webkit-animation:rotate 3.88s linear infinite;
+}
+@-webkit-keyframes rotate{
+	0% {-webkit-transform:rotate(0deg)}
+	50% {-webkit-transform:rotate(180deg)}
+	100%{-webkit-transform:rotate(360deg)}
+}
+
+/*绕中心点旋转-初始位置要定位到圆点位置*/
+.avatar{
+	position:absolute;
+	z-index:999;
+	background:none;
+}
+.avatar.s01{
+	top:50%;
+	left:50%;
+  width:4rem;
+	height:4rem;
+	margin:-2.6rem 0 0 -2.6rem;
+	-webkit-animation:action1 3.88s linear infinite;
+}
+.avatar.s02{
+	top:50%;
+	left:50%;
+  width:3rem;
+	height:3rem;
+	margin:-2.1rem 0 0 -2.1rem;
+	-webkit-animation: action2 3.88s linear infinite;
+}
+.avatar.s03{
+	top:50%;
+	left:50%;
+  width:5rem;
+	height:5rem;
+	margin:-3.1rem 0 0 -3.1rem;
+	-webkit-animation: action3 3.88s linear infinite;
+}
+@-webkit-keyframes  action1{
+	0% {-webkit-transform: rotate(0deg)  translate(5.5rem) rotate(0deg)}
+	100% {-webkit-transform: rotate(360deg) translate(5.5rem) rotate(-360deg)}
+}
+@-webkit-keyframes action2{
+	0% {-webkit-transform: rotate(-120deg)  translate(5.5rem) rotate(120deg)}
+	100% {-webkit-transform: rotate(240deg) translate(5.5rem) rotate(-240deg)}
+}
+@-webkit-keyframes action3{
+	0% {-webkit-transform: rotate(-240deg)  translate(5.5rem) rotate(240deg)}
+	100% {-webkit-transform: rotate(120deg) translate(5.5rem) rotate(-120deg)}
+}
+.avatar:after{
+	content:" ";
+	display:block;
+	position:absolute;
+	border-radius:50%;
+  box-shadow: 0px 0px 18px 0px rgba(77, 161, 255, 0.8);
+	-webkit-animation:shine 1.5s infinite alternate ease-in-out;
+	z-index:-1;
+}
+.avatar.s01:after{
+	top:0.56rem;
+	left:0.56rem;
+	width: 4.1rem;
+	height: 4.1rem;
+}
+.avatar.s02:after{
+	top:0.46rem;
+	left:0.46rem;
+	width: 3.1rem;
+	height: 3.1rem;
+}
+.avatar.s03:after{
+	top:0.74rem;
+	left:0.74rem;
+	width: 5.1rem;
+	height: 5.1rem;
+}
+@-webkit-keyframes shine{
+	0% { 
+		 box-shadow: 0px 0px 18px 0px rgba(77, 161, 255, 0.2);
+	} 
+	50% {  
+		 box-shadow: 0px 0px 18px 0px rgba(77, 161, 255, 1.0);
+	}
+	100% {  
+		 box-shadow: 0px 0px 18px 0px rgba(77, 161, 255, 0.2);
+	}
+}
+/*斜线运动*/
+.rain{
+	position:absolute;
+	display:block;
+  width:99px;
+	height:99px;
+	background-image:url(images/line2.png);
+	background-repeat:no-repeat;
+	background-size:100%;
+	color:#fff;
+}
+.rain.r01{
+	top:-5px;
+	right:10px;
+}
+.rain.r02{
+	width:80px;
+	height:80px;
+	top:197px;
+	right:20px;
+}
+.rain.r03{
+	top:225px;
+	left:-40px;
+	width:140px;
+	height:140px;
+}
+.rain.r04{
+	top:-50px;
+	left:-10px;
+	width:125px;
+	height:125px;
+}
+
+</style>
+</head>
+<body onload="init()">  
+<div class="blank3"></div>
+<div class="circle-wrap">
+  <div class="avatarFix">
+    <div class="avatar s01">
+      <span style="background-image:url(images/avatar0.jpg)"></span>
+    </div>
+    <div class="avatar s02">
+      <span style="background-image:url(images/avatar1.jpg)"></span>
+    </div>
+    <div class="avatar s03">
+      <span style="background-image:url(images/avatar2.jpg)"></span>
+    </div>
+  </div>
+  <div class="circle" id="avatar"></div>
+  <a href="#" class="btn-shake"></a>
+  <div class="shake"></div>
+</div>
+<audio id="shakeAudio"  src="images/shake_sound.mp3"></audio>
+<script>
+function go(){
+	//随机数，并传递到4.html
+  var num =  parseInt(3*Math.random())
+	window.location.href = "4.html?page=" + num;
+}
+	//摇一摇
+	var SHAKE_THRESHOLD = 1000;  
+	var last_update = 0;  
+	var x = y = z = last_x = last_y = last_z = 0;  
+	
+	function init() {  
+			if (window.DeviceMotionEvent) {  
+					window.addEventListener('devicemotion', deviceMotionHandler, false);  
+			} else {  
+					alert('not support mobile event');  
+			}  
+	}  
+	function deviceMotionHandler(eventData) {  
+			var acceleration = eventData.accelerationIncludingGravity;  
+			var curTime = new Date().getTime();  
+			if ((curTime - last_update) > 100) {  
+					var diffTime = curTime - last_update;  
+					last_update = curTime;  
+					x = acceleration.x;  
+					y = acceleration.y;  
+					z = acceleration.z;  
+					var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;  
+
+					if (speed > SHAKE_THRESHOLD) { 
+							 $('#shakeAudio')[0].play();
+							 setTimeout(go, 1800);
+					}  
+					last_x = x;  
+					last_y = y;  
+					last_z = z;  
+			}  
+	} 
+</script>
+<!--斜线运动-->
+<i class="rain r01"></i>
+<i class="rain r02"></i>
+<i class="rain r03"></i>
+<i class="rain r04"></i>
+
+</body>
+</html>
