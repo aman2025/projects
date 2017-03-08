@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="apple-mobile-web-app-title" content="Title"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="fonts/iconfont.css">
+<link rel="stylesheet" href="css/junhao.css">
+<script src="js/jquery.min.js"></script>  
+<script src="js/common.js"></script> 
+<script>
+$(function(){
+	$(".jobs-header i").on("click",function(){
+		 $(this).parent().next().toggle();
+		 $(this).toggleClass("icon-jia");
+	})
+  
+  //应聘-弹窗
+	$(".btn-jobs").on("click",function(){
+		 $("#dialog").fadeIn(200)
+	})
+	
+	//点击遮罩层隐藏
+	$(".mask,#confirm").on("click",function(e){
+			e.stopPropagation()
+			 $("#dialog").fadeOut(200)		 
+	})
+})
+</script>
+<title>junhao</title>
+</head>
+<body>
+<!--头部-->
+<div class="header">
+  <div class="container">
+    <a href="#" class="logo">
+      <img src="images/logo.png" alt="">
+    </a>
+    <div class="nav-right">
+      <div class="nav" id="nav">
+        <ul>
+          <li  class="active"><a href="index.html">首页</a></li>
+          <li>
+            <a href="about-profile.html">关于我们</a>
+            <div class="nav-sub-wrap"></div>
+            <div class="nav-sub">
+              <a href="about-profile.html">企业简介</a>
+              <a href="about-culture.html">企业文化</a>
+              <a href="about-org.html">组织架构</a>
+              <a href="about-team.html">管理团队</a>
+              <a href="about-develop.html">发展战略</a>
+            </div>
+          </li>
+          <li>
+            <a href="news-company.html">新闻动态</a>
+            <div class="nav-sub-wrap"></div>
+            <div class="nav-sub">
+              <a href="news-company.html">公司新闻</a>
+              <a href="news-company.html">行业新闻</a>
+              <a href="news-company.html">业务新闻</a>
+            </div>
+          </li>
+          <li>
+            <a href="product.html">产品中心</a>
+            <div class="nav-sub-wrap"></div>
+            <div class="nav-sub">
+              <a href="product.html">业务介绍</a>
+              <a href="product-show.html">产品中心</a>
+            </div>
+          </li>
+          <li>
+            <a href="recruit.html">加入我们</a>
+            <div class="nav-sub-wrap"></div>
+            <div class="nav-sub">
+              <a href="recruit.html">人才理念</a>
+              <a href="recruit-jobs.html">招聘职位</a>
+            </div>
+          </li>
+          <li><a href="contact.html">联系我们</a></li>
+        </ul>
+      </div>
+      <div class="header-tip">
+        <div class="language">
+          <ul>
+            <li><i class="icon iconfont icon-ENGLISH"></i></li>
+            <li><i class="icon iconfont icon-zhongwen"></i></li>
+            <li class="nav-toggle"><i class="icon iconfont icon-fenlei1"></i></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--//头部-->
+<!--banner-->
+<div class="banner-sub" style="background-image: url(images/banner-recruit.jpg)"></div>
+<!--//banner-->
+<div class="blank"></div>
+<!--内容-->
+<div class="container m-art">
+	<div class="col-md-2">
+		<!--侧边导航-->
+		<div class="aside">
+			  <div class="aside-title">
+			  	<i class="icon iconfont icon-jiaruwomen1"></i>
+			  	<span>
+			  		<em>JOIN US</em>
+			  		<p>加入我们</p>
+			  	</span>
+			  </div>
+			  <div class="sub-nav">
+			  	<ul>
+			  		<li class="bnone"><a href="recruit.html">人才理念</a></li>
+			  		<li class="active bnone"><a href="recruit-jobs.html">招聘职位</a></li>
+			  	</ul>
+			  </div>
+		</div>
+		<!--//侧边导航-->
+	</div>
+	<div class="col-md-10">
+		<!--人才招聘-->
+		<div class="article-wrap article-pr0">
+			<div class="jobs-panel bg05">
+				 <div class="jobs-panel-num">
+					<ul>
+						<li>招聘职位</li>
+						<li>地点</li>
+						<li>人数</li>
+					</ul>
+				 </div>
+			 	 <div class="jobs-panel-text">职位要求</div>
+			</div>	 
+		 <!--会计-->
+		 <div class="jobs-wrap">
+		 	<div class="jobs-header">
+		 		会计
+		 		<i class="icon iconfont icon-Minus"></i>
+		 	</div>
+		 	<div class="jobs-panel">
+			 	 <div class="jobs-panel-num">
+			 	 	<ul>
+			 	 		<li>会计</li>
+			 	 		<li>山西</li>
+			 	 		<li>1</li>
+			 	 	</ul>
+			 	 </div>
+			 	 <div class="jobs-panel-text">
+						<!--招聘详情-->
+						<div class="jobs-detail">
+							<p>岗位职责：</p>
+							<p>1. 正确处理海外销售人员的费用审核，并每月出具相关的财务报表，保证财务数据的准确性、及时性；</p>
+							<p>2. 审核海外出口订单，监控海外客户的信用情况，定期对客户的信用额度进行评估，优化公司的信用管理政策；</p>
+							<p>3. 备案出口信用保险系统，确保公司出口及时收到货款； </p>
+							<p>4. 完善相关工作的财务管理制度。</p>
+							<p>&nbsp;</p>	
+							<p>任职要求：</p>
+							<p>1.学历水平：本科及以上学历；</p>
+							<p>2.专业：财经类相关专业；</p>
+							<p>3.语言要求：具有流利的英文沟通和书写能力</p>
+							<p>4.工作经验：有一年以上财务工作经验，具有应收账款或总账等账务处理的经验，熟悉企业会计准则；</p>
+							<p>5.技能要求：</p>
+							<p>能熟练操作用友财务软件，建立账套；</p>
+							<p>熟悉ERP操作流程；</p>
+							<p>计算机操作熟练；</p>
+							<p>6.素质要求：个性开朗，善于沟通，工作积极主动，能承受一定的工作压力；</p>
+							<button class="btn-jobs">立即应聘</button>
+							 <!--弹窗-->
+							 <div id="dialog" style=" display: none">
+                  <div class="mask"></div>
+                  <div class="dialog">
+                    <div class="dialog-header">提示信息</div>
+                    <div class="dialog-body">请发送简历到 admin@admin.com</div>
+                    <div class="dialog-footer">
+                      <button class="btn-news" id="confirm">确认</button>
+                    </div>
+                  </div>
+               </div>
+							 <!--//弹窗-->
+						</div>
+						<!--//招聘详情-->
+			 	 </div>
+			 </div>
+		 </div>
+		 <!--//会计-->
+		 <!--助理工程师-->
+		 <div class="jobs-wrap">
+		 	<div class="jobs-header">
+		 		助理工程师
+		 		<i class="icon iconfont icon-Minus icon-jia"></i>
+		 	</div>
+		 	<div class="jobs-panel" style="display: none">
+			 	 <div class="jobs-panel-num">
+			 	 	<ul>
+			 	 		<li>助理工程师</li>
+			 	 		<li>助理工程师</li>
+			 	 		<li>1</li>
+			 	 	</ul>
+			 	 </div>
+			 	 <div class="jobs-panel-text">
+						<!--招聘详情-->
+						<div class="jobs-detail">
+							<p>岗位职责：</p>
+							<p>1. 正确处理海外销售人员的费用审核，并每月出具相关的财务报表，保证财务数据的准确性、及时性；</p>
+							<p>2. 审核海外出口订单，监控海外客户的信用情况，定期对客户的信用额度进行评估，优化公司的信用管理政策；</p>
+							<p>3. 备案出口信用保险系统，确保公司出口及时收到货款； </p>
+							<p>&nbsp;</p>	
+							<p>任职要求：</p>
+							<p>1.学历水平：本科及以上学历；</p>
+							<p>2.专业：财经类相关专业；</p>
+							<p>3.语言要求：具有流利的英文沟通和书写能力</p>
+							<p>4.工作经验：有一年以上财务工作经验，具有应收账款或总账等账务处理的经验，熟悉企业会计准则；</p>
+							<p>5.技能要求：</p>
+							<button class="btn-jobs">立即应聘</button>
+							
+						</div>
+						<!--//招聘详情-->
+			 	 </div>
+			 </div>
+		 </div>
+		 <!--//助理工程师-->
+		</div>
+		<!--//人才招聘-->
+	</div>
+</div>
+<!--//内容-->
+<div class="blank"></div>
+<!--底部-->
+<div class="footer-wrap">
+	<div class="footer">
+		<div class="f-nav">
+			<a href="#">首页</a> |
+			<a href="#">关于我们</a> |
+			<a href="#">新闻动态</a> |
+			<a href="#">产品中心</a> |
+			<a href="#">加入我们</a> |
+			<a href="#">联系我们</a>
+		</div>
+		<div class="f-info">
+			Copyright © 2008-2015 君昊煤焦贸易有限责任公司 版权所有 闽ICP备15010068号-1 <span>技术支持：在乎科技</span>
+		</div>
+	</div>
+</div>
+<!--//底部-->
+</body>
+</html>
