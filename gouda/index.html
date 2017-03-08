@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title></title>
+<link rel="stylesheet" href="css/gouda.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script src="js/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("body").swipe({swipeUp:swipe1, threshold: 35});
+	
+	function swipe1(event, direction, distance, duration) {
+		/*选择性别*/
+		window.location="choose.html"
+	}
+	/*逐字发光*/
+	var $Font = $("#fonts span");
+	$Font.eq(0).addClass("shine");
+	/*2*/
+	$Font.eq(0)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$Font.eq(1).addClass("shine");
+	}, false);
+	/*3*/
+	$Font.eq(1)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$Font.eq(2).addClass("shine");
+	}, false);
+	/*4*/
+	$Font.eq(2)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$Font.eq(3).addClass("shine");
+	}, false);
+	/*5*/
+	$Font.eq(3)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$Font.eq(4).addClass("shine");
+	}, false);
+	/*6*/
+	$Font.eq(4)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$Font.eq(5).addClass("shine");
+	}, false);
+	/*7*/
+	$Font.eq(5)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$Font.eq(6).addClass("shine");
+	}, false);
+	/*8*/
+	$Font.eq(6)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$Font.eq(7).addClass("shine");
+	}, false);
+	/*9*/
+	$Font.eq(7)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$Font.eq(8).addClass("shine");
+	}, false);
+	/*10*/
+	$Font.eq(8)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$Font.eq(9).addClass("shine");
+	}, false);
+	/*10*/
+	$Font.eq(9)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$Font.eq(0).addClass("shine");
+	}, false);
+	
+	
+});
+</script>
+</head>
+<body class="body-none">
+<div class="body-line"></div>
+<div class="blank-main"></div>
+<div class="main-pic01">
+	<i class="eye"></i>
+	<i class="eye"></i>
+	<i class="eye"></i>
+	<i class="eye"></i>
+	<div id="fonts">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+	<article></article>
+</div>
+<div class="main-pic02">
+	<span></span>
+	<span></span>
+	<label></label>
+</div>
+<div class="main-pic03"></div>
+<div class="main-pic04"></div>
+<span class="arrow"></span>
+</body>
+</html>

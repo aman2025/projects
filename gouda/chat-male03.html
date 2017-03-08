@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title></title>
+<link rel="stylesheet" href="css/gouda.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script src="js/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	//点击问题项
+	var n = 0;
+	$("#question span").each(function(index){
+			$(this).click(function(){
+				n = index + 1;
+				$("#chat-question").css("background-image","url(images/scene03/chat-scene-question0" + n +".png)");
+				$("#chat-reponse").css("background-image","url(images/scene03/chat-scene-reponse0" + n +".png)");
+				$("#music")[0].play();
+				$(".chat-scene").css("top","-3.8rem");
+				$("#chat-question").addClass("chats");
+			})
+	})
+	
+	
+	/*聊天记录-逐条监听*/
+	/*1*/
+	$(".chat-scene label:eq(0)")[0].addEventListener("webkitAnimationEnd", function(){ 
+		setTimeout(function(){
+			audioPlay();
+			$(".chat-scene label:eq(1)").addClass("chats");
+		},800)
+		
+	}, false); 
+	/*2*/
+	$(".chat-scene label:eq(1)")[0].addEventListener("webkitAnimationEnd", function(){ 
+		setTimeout(function(){
+			audioPlay();
+			$(".chat-scene label:eq(2)").addClass("chats");
+		},800)
+	}, false); 
+	/*3*/
+	$(".chat-scene label:eq(2)")[0].addEventListener("webkitAnimationEnd", function(){ 
+		setTimeout(function(){
+			audioPlay();
+			$(".chat-scene label:eq(3)").addClass("chats");
+		},800)
+	}, false); 
+	/*4*/
+	$(".chat-scene label:eq(3)")[0].addEventListener("webkitAnimationEnd", function(){ 
+		setTimeout(function(){
+			audioPlay();
+			$(".chat-scene label:eq(4)").addClass("chats");
+		},800)
+	}, false); 
+	/*5*/
+	$(".chat-scene label:eq(4)")[0].addEventListener("webkitAnimationEnd", function(){ 
+		setTimeout(function(){
+			audioPlay();
+			$(".question-item").addClass("question")
+		},0)
+	}, false); 
+	/*自动回复*/
+	$("#chat-question")[0].addEventListener("webkitAnimationEnd", function(){ 
+		setTimeout(function(){
+			$("#music")[0].play();
+			$(".chat-scene").css("top","-7rem");
+			$("#chat-reponse").addClass("chats");
+		},1000)
+	}, false); 
+	/*监听最后一条跳转*/
+	$("#chat-reponse")[0].addEventListener("webkitAnimationEnd", function(){ 
+		setTimeout(function(){
+				window.location="scores01.html"
+		},1500)
+	}, false); 
+	
+	
+})
+function audioPlay(){
+	$("#music")[0].play();
+	$("#music")[0].currentTime = 0;
+}	
+</script>
+<style>
+.chat-scene.s01 label:nth-child(1){
+	top:0;
+	background-image: url(images/scene03/chat-scene-01.png);
+	-webkit-animation:chats 0.8s linear  forwards 1s;
+}
+.chat-scene.s01 label:nth-child(2){
+	top:3.2rem;
+	background-image: url(images/scene03/chat-scene-02.png);
+	/*-webkit-animation:chats 0.8s linear forwards  2s;*/
+}
+.chat-scene.s01 label:nth-child(3){
+	top:6.5rem;
+	background-image: url(images/scene03/chat-scene-03.png);
+	/*-webkit-animation:chats 0.8s linear forwards  3.5s ;*/
+}
+.chat-scene.s01 label:nth-child(4){
+	top:9.8rem;
+	background-image: url(images/scene03/chat-scene-04.png);
+	/*-webkit-animation:chats 0.8s linear forwards 5s;*/
+}
+.chat-scene.s01 label:nth-child(5){
+	top:13.2rem;
+	background-image: url(images/scene03/chat-scene-05.png);
+	/*-webkit-animation:chats 0.8s linear forwards 6.5s;*/
+}
+/*底部3个选项*/
+.question-item.s01 span:nth-child(1){
+	background-image: url(images/scene03/question-item1.png);
+}
+.question-item.s01 span:nth-child(2){
+	background-image: url(images/scene03/question-item2.png);
+}
+.question-item.s01 span:nth-child(3){
+	background-image: url(images/scene03/question-item3.png);
+}
+/*自动回复*/
+#chat-question{
+	top:16.5rem;
+}
+#chat-reponse{
+	top:20.0rem;
+}
+/*起始对话框位置*/
+.chat-scene label:nth-child(odd){
+	left:0.5rem;
+}
+.chat-scene label:nth-child(even){
+	right:0.5rem;
+}
+
+</style>
+</head>
+<body>
+<audio src="images/audio.mp3" id="music" preload="auto" autoplay ></audio>
+<div class="blank-chat"></div>
+<div class="chat-scene s01">
+	<label></label>
+	<label></label>
+	<label></label>
+	<label></label>
+	<label></label>
+	<label id="chat-question"></label>
+	<label id="chat-reponse"></label>
+</div>
+<img class="chat-keyboard" src="images/chat-keyboard.png">
+
+<div class="question-item s01" id="question">
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
+</body>
+</html>

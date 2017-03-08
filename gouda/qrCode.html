@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title></title>
+<link rel="stylesheet" href="css/gouda.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script src="js/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".btn-share").click(function(){
+		$(this).addClass("btn-ani")	
+	})
+	
+	/*逐字显示*/
+	var $score = $("#qrCode span");
+	$score.eq(0).addClass("jump");
+	/*2*/
+	$score.eq(0)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$score.eq(1).addClass("jump");
+	}, false);
+	$score.eq(1)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$score.eq(2).addClass("jump");
+	}, false);
+	$score.eq(2)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$score.eq(3).addClass("jump");
+	}, false);
+	$score.eq(3)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$score.eq(4).addClass("jump");
+	}, false);
+	$score.eq(4)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$score.eq(5).addClass("jump");
+	}, false);
+	$score.eq(5)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$score.eq(6).addClass("jump");
+	}, false);
+	
+	$score.eq(6)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$score.eq(7).addClass("jump");
+	}, false);
+	$score.eq(7)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$score.eq(8).addClass("jump");
+	}, false);
+	$score.eq(8)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$score.eq(9).addClass("jump");
+	}, false);
+	$score.eq(9)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$score.eq(10).addClass("jump");
+	}, false);
+	$score.eq(10)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$score.eq(11).addClass("jump");
+	}, false);
+	$score.eq(11)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$score.eq(12).addClass("jump");
+	}, false);
+	$score.eq(12)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$score.eq(13).addClass("jump");
+	}, false);
+	$score.eq(13)[0].addEventListener("webkitAnimationEnd", function(){ 
+		$score.eq(14).addClass("jump");
+	}, false);
+});
+</script>
+</head>
+<body>
+<div class="blank-share"></div>
+<div class="qrCode" id="qrCode">
+	<label></label>
+	<label></label>
+	<div>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+	<img src="images/qrCode_pic.png">
+</div>
+</body>
+</html>
