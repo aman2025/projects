@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title></title>
+<link rel="stylesheet" href="css/sport.css"> 
+<script src="js/jquery-1.11.1.min.js"></script> 
+<script>
+$(function(){
+	 /*显示弹出层*/
+	 $("#share").click(function(){
+			 $("#getPower").show();
+	 })
+	 /*关闭弹出层*/
+	 $("#pop-close").click(function(){
+			 $("#getPower").hide();
+	 })
+	 
+	 $("#submit-share").click(function(){
+			 $("#pop-tip").show();
+				setTimeout(closePop, 3000);
+	 })
+		function closePop(){
+				$("#getPower").fadeOut();
+				$("#pop-tip").hide();
+		}
+		
+		
+		/*文本框*/
+		$("#s-texta").focus(function(){
+				if($(this).val() ==this.defaultValue){  
+					$(this).val("");
+					$(this).css("color","#000"); 
+				} 
+		}).blur(function(){
+			 if ($(this).val() == '') {
+				$(this).val(this.defaultValue);
+			 }else{
+				}
+		});
+
+})
+</script>
+</head>
+<body class="player-bg">
+  
+  <!--选手简介-->
+  <div class="player-header-bg player-line">
+     <div class="my-info">
+     	 <img src="img/space.png" style="background:url(img/nonePic.png);"> 
+      <span>王小川</span>
+      <small>13800138000</small>
+     </div>
+  </div>
+  <!--//选手简介-->
+  <div class="my-rank">
+  	<span>我在福建互联网排名</span>
+    <label>1000</label>
+  </div>
+  <!--选手各项-->
+  <div class="level-main">
+  	<ul>
+    	<li>
+      	<i class="s01"></i>
+        <span>力量</span>
+        <label>9999</label>
+      </li>
+    	<li>
+      	<i class="s02"></i>
+        <span>智慧</span>
+        <label>9999</label>
+      </li>
+    	<li>
+      	<i class="s03"></i>
+        <span>敏捷</span>
+        <label>9999</label>
+      </li>
+    	<li>
+      	<i class="s04"></i>
+        <span>韧性</span>
+        <label>9999</label>
+      </li>
+    	<li>
+      	<i class="s05"></i>
+        <span>勇气</span>
+        <label>9999</label>
+      </li>
+    	<li>
+      	<i class="s06"></i>
+        <span>魅力</span>
+        <label>9999</label>
+      </li>
+    </ul>
+  </div>  
+  <!--//选手各项-->
+  <div class="join-bk">
+  	<a href="javascript:void(0)" class="btn-share" id="share">参与偷师曝料</a>
+  </div>
+  <!--兑奖号-->
+  <div class="comment-tabs">
+  	<div class="tabs-tip">(活动每天中奖名单将在“福建互联网人”公众号中公布)</div>
+  	<ul  id="tab1">
+    	<li class="active">兑奖号</li>
+    	<li style="visibility:hidden"></li>
+    </ul>
+  </div>
+  <div class="tab_box1">
+  	<div>
+    	<div class="coupon">
+      	<ul>
+        	<li>7000100</li>
+         	<li>7000100</li>
+        	<li>7000100</li>
+        	<li>7000100</li>
+       </ul>
+      </div>
+      <div class="qrCode">
+      	<img src="img/qr.png">
+        <span>长按二维码快速关注或公众号搜索<Br>“福建互联网人”</span>
+      </div>
+    </div>
+  </div>
+  <!--//兑奖号-->
+  <!--我的评论-->
+  <div class="comment-tabs">
+  	<ul  id="tab1">
+    	<li class="active">我的评论</li>
+    	<li style="visibility:hidden"></li>
+    </ul>
+  </div>
+  <div class="tab_box1">
+  	<div>
+    	<!--我的评论-->
+      <div class="comment-list">
+        <h5>137****0000 为｛<span>选手名</span>｝增加</h5> 
+        <p>我没什么好曝料的，云总就素IT界的刘翔，刘翔界的乔不死。谁顶谁知道！</p>
+        <div class="comment-info">
+          <div class="pull-left text-primary">2015.10.10  00：00 </div>  
+          <div class="pull-right"><b>13531</b>  <a href="#" class="text-primary">认同</a></div>  
+        </div>  
+      </div>  
+      <div class="comment-list">
+        <h5>137****0000 为｛<span>选手名</span>｝增加</h5> 
+        <p>我没什么好曝料的，云总就素IT界的刘翔，刘翔界的乔不死。谁顶谁知道！</p>
+        <div class="comment-info">
+          <div class="pull-left text-primary">2015.10.10  00：00 </div>  
+          <div class="pull-right"><b>13531</b><a href="#" class="text-primary">认同</a></div>  
+        </div>  
+      </div>  
+      <!--//我的评论-->
+    </div>
+  </div>
+  <!--//我的评论-->
+  <div class="blank-footer"></div>
+  <!--footer-->
+  <div class="footer">
+    <nav class="nav-footer">
+      <a href="index.html">主页</a>
+      <a href="playerList.html">选手</a>
+      <a href="top10.html">榜单</a>
+      <a href="my.html" class="active">我的</a>
+    </nav>
+  </div>
+  <!--//footer -->
+</body>
+</html>

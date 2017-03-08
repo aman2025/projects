@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title></title>
+<link rel="stylesheet" href="css/sport.css"> 
+<link rel="stylesheet" href="css/swiper.min.css">
+<script src="js/jquery-1.11.1.min.js"></script> 
+<script>
+$(function(){
+})
+</script>
+<style>
+body,html{
+	height:100%;
+	overflow:hidden;	
+  position: relative;
+}
+.swiper-container {
+		width: 100%;
+		height: 100%;
+}
+.swiper-slide {
+		text-align: center;
+		font-size: 18px;
+		background: #fff;
+
+		/* Center slide text vertically */
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		-webkit-align-items: center;
+		align-items: center;
+}
+.guide01{
+	background:#FFCB32;
+}
+.guide02{
+	background:#BFFFFF;
+}
+.guide03{
+	background:#00D936;
+}
+/*箭头动画*/
+.scroll-tip{
+	position:absolute;
+	left:50%;
+	bottom:20px;
+	margin-left:-22px;
+	width:44px;
+	height:44px;
+	background:rgba(0,0,0,.1);
+	border-radius:50%;
+	text-align:center;	
+}
+.arr{
+	width:22px;
+	height:13px;
+	background:url(img/arrow.png) no-repeat;
+	background-size:100%;
+	display:block;
+	opacity:0.5;	
+	margin:0 auto;
+}
+.tips-ani{
+	-webkit-animation:tips-ani 1s ease-out infinite;
+}
+@-webkit-keyframes tips-ani {
+		0% {-webkit-transform:translateY(20px); opacity: 0.5;}
+		100% { -webkit-transform:translateY(-10px); opacity: 0;}
+}  
+.guide-in{
+	position:absolute;
+	bottom:1rem;
+	left:0;
+	right:0;
+	z-index:9999999;
+}
+.btn-go{
+	margin:0 auto;
+	width:8.8rem;
+	border-radius:3rem;
+	padding:.3rem;
+	height:auto;	
+}
+</style>
+</head>
+<body>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide guide01">
+                <div class="guide01-pic" >
+                  <img src="img/space.png" style="background:url(img/nonePic.png)">
+                </div>
+                <aside class="scroll-tip">
+                  <span class="arr tips-ani"></span>
+                </aside>  
+            </div>
+            <div class="swiper-slide guide02">
+                <div class="guide02-pic" >
+                  <img src="img/space.png" style="background:url(img/nonePic.png)">
+                </div>  
+                <aside class="scroll-tip">
+                  <span class="arr tips-ani"></span>
+                </aside>  
+            </div>
+            <div class="swiper-slide guide03">
+                <div class="guide03-pic" >
+                  <img src="img/space.png" style="background:url(img/nonePic.png)">
+                </div>
+                <div class="guide-in">
+                  <a href="main.html" class="btn-share btn-go">进入主页</a> 
+                </div>  
+    
+                 
+            </div>
+        </div>
+        <!-- Add Pagination -->
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="js/swiper.min.js"></script>
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        paginationClickable: true,
+        direction: 'vertical'
+    });
+    </script>
+</body>
+</html>

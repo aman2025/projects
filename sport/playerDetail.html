@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title></title>
+<link rel="stylesheet" href="css/sport.css"> 
+<script src="js/jquery-1.11.1.min.js"></script> 
+<script>
+$(function(){
+	 /*显示弹出层*/
+	 $("#share").click(function(){
+			 $("#getPower").show();
+	 })
+	 /*关闭弹出层*/
+	 $("#pop-close").click(function(){
+			 $("#getPower").hide();
+	 })
+	 
+	 $("#submit-share").click(function(){
+			 $("#pop-tip").show();
+				setTimeout(closePop, 3000);
+	 })
+		function closePop(){
+				$("#getPower").fadeOut();
+				$("#pop-tip").hide();
+		}
+		
+	  /*切换评论*/
+		$.TabChange("tab1",1);
+		
+		/*文本框*/
+		/*$("#s-texta").focus(function(){
+				if($(this).val() ==this.defaultValue){  
+					$(this).val("");
+					$(this).css("color","#000"); 
+				} 
+		}).blur(function(){
+			 if ($(this).val() == '') {
+				$(this).val(this.defaultValue);
+			 }else{
+				}
+		});*/
+		
+
+})
+$.TabChange = function(obj,num){
+	$("li","#" + obj).each(function(index){
+			$(this).click(function(i){
+			 	$("div.tab_box" + num + " > div").eq(index).show().siblings().hide();
+				$(this).addClass("active").siblings().removeClass("active");
+			})													
+	})
+}
+</script>
+<style>
+#s-texta::-webkit-input-placeholder::before {
+    color:#999;
+    content:"曝料填写冠军榜人物小故事或你的偷师理由加个人魅力值哦（评论被认同双方加乘），还有机会获得更多大礼^-^";
+}
+</style>
+</head>
+<body class="player-bg">
+  <!--弹出层-->
+  <div class="getPower" id="getPower">
+    <div class="comment-tabs tabs2">
+      <ul>
+        <li>偷师爆料</li>
+      </ul>
+      <div class="tab-tip">选择你想要偷师成长的个人属性，限选3项</div>  
+    </div>
+    <!--选项-->
+    <div class="power-item">
+    	<ul>
+      	<li>
+          <label>
+            <input type="checkbox" id="checkbox_a1" class="chk_1"  /><label for="checkbox_a1"></label>
+            <div>
+              <b>力量</b>
+              <article>代表目前所处的行业地位及企业</article>
+            </div>
+          </label>
+        </li>
+      	<li><label><input type="checkbox" id="checkbox_a2" class="chk_1"  /><label for="checkbox_a2"></label><div><b>敏捷</b><article>代表执行效率</article></div></label></li>
+      	<li><label><input type="checkbox" id="checkbox_a3" class="chk_1"  /><label for="checkbox_a3"></label><div><b>智慧</b><article>代表对环境的快速判断适应、领悟和创新能力</article></div></label></li>
+      	<li><label><input type="checkbox" id="checkbox_a4" class="chk_1"  /><label for="checkbox_a4"></label><div><b>勇气</b><article>代表面向新领域或新兴市场时的果敢和决断力</article></div></label></li>
+      	<li><label><input type="checkbox" id="checkbox_a5" class="chk_1"  /><label for="checkbox_a5"></label><div><b>韧性</b><article>代表遭遇困境时是否保持足够的耐心和韧劲</article></div></label></li>
+      </ul>
+    </div> 
+    <!--表单-->
+    <div class="s-form">
+    	<textarea class="s-texta" id="s-texta" placeholder=" "></textarea>
+      <input type="text" class="s-ipt" placeholder="您的手机号码">
+      <div class="s-submit">
+        <a href="javascript:void(0)" class="btn-share" id="pop-close">关闭</a>
+        <a href="javascript:void(0)" class="btn-share" id="submit-share">提交并分享</a>
+      </div>  
+      <!--提示框-->
+    	<div class="pop-tip" id="pop-tip" style="display:none">
+      	<h3>恭喜您偷师成功! </h3>
+        <article>
+        	您和导师将各自增加1点 力量 智慧 勇气 <span>(3秒后自动关闭)</span>
+        </article>
+      </div>  
+      <!--//提示框-->
+    </div>  
+    
+  </div>  
+  <!--//弹出层-->
+  <!--选手简介-->
+  <div class="player-header-bg player-line">
+    <div class="player">
+      <div class="player-pic">
+        <img src="img/space.png" style="background:url(img/nonePic.png)">
+      </div>
+      <div class="player-info">
+      	<h3>李一男<small>百度助手技术总监</small></h3>
+        <p>华中理工大学少年班毕业。15岁考入当时的华中理工大学少年班；26岁成为华为常务副总裁华中理工大学少年班毕业。15岁考入当时的华中理工大学少年班；26岁成华中理工大学少年班毕业。15岁考入当时的华中理工大学少年班；26岁成</p>
+      </div>  
+    </div>
+    <a href="javascript:void(0)" class="btn-next"></a>  
+    <a href="javascript:void(0)" class="btn-prev"></a>  
+  </div>
+  <!--//选手简介-->
+
+  <!--选手各项-->
+  <div class="level-main">
+  	<ul>
+    	<li>
+      	<i class="s01"></i>
+        <span>力量</span>
+        <label>9999</label>
+      </li>
+    	<li>
+      	<i class="s02"></i>
+        <span>智慧</span>
+        <label>9999</label>
+      </li>
+    	<li>
+      	<i class="s03"></i>
+        <span>敏捷</span>
+        <label>9999</label>
+      </li>
+    	<li>
+      	<i class="s04"></i>
+        <span>韧性</span>
+        <label>9999</label>
+      </li>
+    	<li>
+      	<i class="s05"></i>
+        <span>勇气</span>
+        <label>9999</label>
+      </li>
+    	<li>
+      	<i class="s06"></i>
+        <span>魅力</span>
+        <label>9999</label>
+      </li>
+    </ul>
+  </div>  
+  <!--//选手各项-->
+  <!--上榜项目-->
+  <div class="rank-pro">
+  	<div class="rank-title">上榜<br/>项目</div>
+    <div class="">
+      <ul>
+        <li class="g01"></li>
+        <li class="g02"></li>
+        <li class="g03"></li>
+        <li class="g04"></li>
+        <li class="g05"></li>
+        <li class="g06"></li>
+        <li class="g07"></li>
+        <li class="g08"></li>
+        <li class="g09"></li>
+        <li class="g10"></li>
+      </ul>
+    </div>  
+  </div>  
+  <!--//上榜项目-->
+  <div class="join-bk">
+  	<a href="javascript:void(0)" class="btn-share" id="share">参与偷师曝料</a>
+  </div>
+  <!--评论-->
+  <div class="comment-tabs">
+  	<ul  id="tab1">
+    	<li class="active">热门评论</li>
+    	<li>最新评论</li>
+    </ul>
+  </div>
+  <div class="tab_box1">
+  	<div>
+    	<!--热门评论-->
+      <div class="comment-list">
+        <h5>137****0000 为｛<span>选手名</span>｝增加</h5> 
+        <p>我没什么好曝料的，云总就素IT界的刘翔，刘翔界的乔不死。谁顶谁知道！</p>
+        <div class="comment-info">
+          <div class="pull-left text-primary">2015.10.10  00：00 </div>  
+          <div class="pull-right"><b>13531</b>  <a href="#" class="text-primary">认同</a></div>  
+        </div>  
+      </div>  
+      <div class="comment-list">
+        <h5>137****0000 为｛<span>选手名</span>｝增加</h5> 
+        <p>我没什么好曝料的，云总就素IT界的刘翔，刘翔界的乔不死。谁顶谁知道！</p>
+        <div class="comment-info">
+          <div class="pull-left text-primary">2015.10.10  00：00 </div>  
+          <div class="pull-right"><b>13531</b>  <a href="#" class="text-primary">认同</a></div>  
+        </div>  
+      </div>  
+      <!--//热门评论-->
+    </div>
+    <div style="display:none">
+    	<!--最新评论-->
+      <div class="comment-list">
+        <h5>137****0000 为｛<span>选手名</span>｝增加</h5> 
+        <p>最新评论内容</p>
+        <div class="comment-info">
+          <div class="pull-left text-primary">2015.10.10  00：00 </div>  
+          <div class="pull-right"><b>13531</b>  <a href="#" class="text-primary">认同</a></div>  
+        </div>  
+      </div>  
+      <!--//最新评论-->
+    </div>
+  </div>
+  <!--//评论-->
+  <div class="blank-footer"></div>
+  <!--footer-->
+  <div class="footer">
+    <nav class="nav-footer">
+      <a href="index.html">主页</a>
+      <a href="playerList.html"  class="active">选手</a>
+      <a href="top10.html">榜单</a>
+      <a href="my.html">我的</a>
+    </nav>
+  </div>
+  <!--//footer -->
+</body>
+</html>
