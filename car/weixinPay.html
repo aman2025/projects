@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon-precomposed" href="img/screen_icon.png">
+<title>car</title>
+<link rel="stylesheet" href="css/jquery.mobile-1.4.4.css" /> 
+<link rel="stylesheet" href="css/car.css"> 
+<script src="js/jquery-1.11.1.min.js"></script> 
+<script src="js/jquery.mobile-1.4.4.min.js"></script>
+<script src="js/iscroll.js"></script>
+<script>
+$(function(){
+	/*点击弹出 缴费项目*/
+	$("#allType li").click(function(){
+		$("#allType li").find("img").attr("src","img/radio.png");
+		$(this).find("img").attr("src","img/radioed.png");
+		$("#payItemName").text($(this).text()); 
+		$("#payAmount").val($(this).attr("alt"))
+		$("#payItem").popup("close");
+	})
+	
+	$("#allType > div > h3").click(function(){
+		var objul=$(this).parent().find("ul");
+		if(objul.is(":visible")==false){
+			objul.show();
+		}else{
+			objul.hide();
+		}
+		$(this).parent().toggleClass("active"); 
+		setTimeout(function () {
+			myScroll.refresh();
+		 }, 0);
+		
+	})
+	
+})
+var myScroll;
+function loaded() {
+	myScroll = new IScroll('#pay_wrapper', {
+        tap:true,
+		click:false,
+		preventDefaultException:{tagName:/.*/},//解除默认事件锁定，调用tab，click等事件,不支持swipeleft
+		scrollbars: true,
+		mouseWheel: true,
+		fadeScrollbars: true
+	}); 
+}
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+</script>
+<style>
+.x_item li{font-size:1em;padding-top:0.6em;padding-bottom:0.6em; color:#555; }
+.c_ipt,.c_texta{ color:#333; font-size:1.1em;padding-left:0.5em;}
+.x_blank{ height:18px;}
+.c_ipt::-webkit-input-placeholder,.c_texta::-webkit-input-placeholder{color:#333;}
+.unit_bk{ position:relative}
+.unit_bk span{ position:absolute; top:12px; right:10px; color:#333; font-size:1.1em;}
+.c_popupList{
+	border-radius: 0;
+   -webkit-border-radius: 0;
+}
+/*div滚动条*/
+.wrapper_zone{
+	position: relative;
+	min-width:288px;
+	min-height: 220px;
+	max-height: 330px;
+	overflow: hidden;
+	/* Prevent native touch events on Windows */
+	-ms-touch-action: none;
+
+	/* Prevent the callout on tap-hold and text selection */
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	/* Prevent text resize on orientation change, useful for web-apps */
+	-webkit-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	-o-text-size-adjust: none;
+	text-size-adjust: none;
+}
+
+.scroller_zone{
+	position: absolute;
+	/* Prevent elements to be highlighted on tap */
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	/* Put the scroller into the HW Compositing layer right from the start */
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+}
+#payItem{
+	background:#fff;
+	border-radius: 3px;
+    -webkit-border-radius: 3px;
+    padding:3px 0;
+}
+</style>
+</head>
+<body onLoad="loaded()">
+<div id="pageWeixinPay" data-role="page" data-theme="none">
+<!--缴费项目-->
+<div data-role="popup" id="payItem" class="ui-content" data-position-to="window" data-tolerance="10,10,10,10" data-shadow="false" data-overlay-theme="b" data-corners="false">
+    <div class="wrapper_zone" id="pay_wrapper">
+        <div class="scroller_zone">
+           <div class="c_panel" id="allType">
+             <!--缴费-->
+             <div class="c_popupList">
+                 <h3><span></span>一类缴费</h3>
+                 <ul style="display:none">
+                    <li alt="300"><img src="img/radio.png">补考费</li>
+                    <li alt="20"><img src="img/radio.png">拍照费</li>
+                    <li alt="200"><img src="img/radio.png">科目一补考费</li>
+                 </ul>
+              </div>
+              <div class="c_popupList">
+                 <h3><span></span>二类缴费</h3>
+                 <ul style="display:none">
+                    <li alt="100"><img src="img/radio.png">复印费</li>
+                    <li alt="50"><img src="img/radio.png">工本费</li>
+                    <li alt="50"><img src="img/radio.png">科目二补考费</li>
+                    <li alt="50"><img src="img/radio.png">科目二补考费</li>
+                    <li alt="50"><img src="img/radio.png">科目二补考费</li>
+                    <li alt="50"><img src="img/radio.png">科目二补考费</li>
+                </ul>
+              </div>
+              <!--//缴费-->
+            </div>  
+        </div>  
+    </div>
+</div>
+<!--//缴费项目-->
+
+	<div data-role="header" data-theme="none"  class="x_header"  data-position="fixed"  data-tap-toggle="false">
+        <a href="#"  data-role="none" data-rel="back" class="x_btn_back" data-ajax="false"></a>
+        <h1>缴费</h1>
+	</div><!--//header -->
+	<div class="x_content c_wrapper_padd">
+        <!--缴费-->
+        <div class="c_merchant">
+        	<div class="c_merchant_pic"><img src="img/jx_logo.jpg"></div>
+            厦门东正汽车服务有限公司
+        </div>
+        <div class="x_item subItem">
+            <ul>
+                <a href="#payItem" data-rel="popup" data-transition="pop"><li id="payItemName">补考费</li></a>
+            </ul>
+        </div>
+        <div class="item_note">
+        	补考费：根据车管所定价，第102条规定第二次补考500元
+        </div>
+        <div class="c_formMain">
+            <div class="x_blank"></div>
+            <div class="unit_bk"><span>元</span></div>
+            <input data-role="none" type="text" id="payAmount" class="c_ipt" placeholder="金额" >
+            <div class="x_blank"></div>
+            <input data-role="none" type="text" id="remark" class="c_ipt" placeholder="备注" >
+            <div class="x_blank"></div>
+        </div>
+        <a href="#" class="ui-btn ui-corner-all x_btn couponsBtn" id="">微信支付</a>
+        <div class="text-right"><a href="weixinPayList.html" class="text-primary">支付记录</a></div>
+        <!--//缴费-->
+	</div>
+</div> <!--//Page-->
+</body>
+</html>
