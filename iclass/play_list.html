@@ -1,0 +1,23 @@
+<meta charset="utf-8">
+<!--目录 -->
+  <div class="x_videoList">
+      <ul>
+         <li class="active">[第1集] 课程介绍</li>
+         <li>[第2集] 宇宙——你不敢问的问题</li>
+         <li>[第3集] 爱因斯坦场方程</li>
+         <li>[第4集] X射线双星和寻找黑洞</li>
+         <li>[第5集] 宇宙和三个例子</li>
+         <li>[第6集] 宇宙结构形成,由暴涨到星系</li>
+         <li>[第7集] 黑洞是一种引力极强的天体</li>
+         <li>[第8集] 了解广义相对论相关知识</li>
+      </ul>
+  </div>
+  <!--//目录 -->
+<script>
+$(function(){
+    $(".x_videoList li").on("click","",function(){
+        $(this).addClass("active").siblings().removeClass("active");
+    })
+})
+</script>
+

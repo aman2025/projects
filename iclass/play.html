@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>极客·爱学习</title>
+<link rel="stylesheet" href="css/jquery.mobile-1.4.4.css" /> 
+<link rel="stylesheet" href="css/iClass.css">
+<script src="xdk/init-dev.js"></script>
+<script src="js/jquery-1.11.1.min.js"></script> 
+<script src="js/iscroll.js"></script>
+<script src="js/jquery.autoTextarea.js"></script>         
+<script src="js/jquery.mobile-1.4.4.min.js"></script>
+</head>
+<body>
+<div id="pagePlay" data-role="page" data-theme="none" >
+<style>
+#pagePlay {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+</style>
+    <div data-role="header" data-theme="none"  class="x_header2"  data-position="fixed"  data-tap-toggle="false">
+        <a href="#"  data-role="none" data-rel="back" class="x_btn_back" data-transition="slide"></a>
+        <div class="tit_play">详情</div>
+        <div class="tool01">
+            <ul>
+                <li><span class="x_btn_star"></span></li>
+                <li><span class="x_btn_download"></span></li>
+                <li><a href="#pageShare" data-rel="popup"  class="x_btn_share" data-position-to="window" data-transition="pop" ></a></li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="content" class="x_content" >
+        <div id="x_play">
+            <div id="scroller">
+                <!--视频播放 -->
+                <div class="x_video">
+                    <video controls preload="auto" width=100% height=180 poster="img/mi4.png" src="img/mi4.webm"></video>
+                </div>
+                <!--//视频播放 --> 
+                <div class="x_tabs01" id="x_tabs_video">
+                    <ul>
+                        <li class="active"><a href="#">简介</a></li>
+                        <li><a href="#">目录</a></li>
+                        <li><a href="#">评论</a></li>
+                    </ul>
+                </div>
+                <div class="x_tab_content"  style="width:100%;">
+                   <div class="conBk"   style="width:300%; position:relative; top:0; left:0;">
+                      <div class="con" id="playInfo" style="width:33.33%; overflow:hidden">
+                          <!--ajax简介-->
+                            <div class="x_videoDetail">
+                                <h3>麻省理工学院公开课：搜索黑洞</h3>
+                                <span>类型：数理</span>
+                                <span>学校：麻省理工学院</span>
+                                <span>讲师：艾德-博钦格,埃德温-泰勒</span>
+                                <p>本课程在黑洞的相关领域内研究物理效应，并将其作为了解广义相对论、天体物理和宇宙学相关知识的基础。课程包含对当今理论和观测的拓展和延伸。</p>
+                           </div>
+                      </div>
+                      <div class="con" id="playList" style="width: 33.33%">
+                          <!--ajax目录 -->目录
+                      </div>
+                      <div class="con" id="playComment" style="width: 33.33%; background: #e2e2e2">
+                          <!--ajax评论 -->评论
+                      </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+   
+$(function(){
+    var strhtml='';
+    //加载本地存储localStorage中的数据
+    for(var i=0;i<localStorage.length; i++){
+        var strkey=localStorage.key(i); //遍历localstorage中所有的key
+        if(strkey.substring(0,4)=="note"){ //key前缀为note的key
+            var jsondata=$.parseJSON(localStorage.getItem(strkey)) //解析字符串为json对象
+            
+            strhtml+='<li><div class=x_vc_pic><div class=x_tx><img src=img/icon_tx01.png></div></div>'
+                +'<div class=x_vc_text>'
+                    +'<h4>' + jsondata.username + '<span>1分钟前：</span></h4>'
+                    +'<p>' + jsondata.txtcon + '</p>'
+                +'</div></li>';
+        }
+    }
+    var myScroll_play;
+    $("#pagePlay").on("pageshow",function(){
+        if(myScroll_play==null){
+                setTimeout(function(){
+                  myScroll_play = new IScroll('#x_play', {
+                        tap:true,
+                        click:false, 
+                        preventDefaultException:{tagName:/.*/},//解除默认事件锁定，调用tab，click等事件,不支持swipeleft
+                        scrollbars: true,
+                        mouseWheel: true,
+                        interactiveScrollbars: true,
+                        shrinkScrollbars: 'scale',
+                        fadeScrollbars: true
+                    });
+                    myScroll_play.on("beforeScrollStart",function(){
+                        document.removeEventListener('touchmove', preventDefault, false);
+                    })
+                    myScroll_play.on("scrollEnd",function(){
+                        document.addEventListener('touchmove', preventDefault, false);
+                    })
+                },0)
+            }else{
+
+                }
+         
+         
+     });
+	 
+    
+    
+     /*-----评论框高度自适应-------*/
+   	 $(".x_vc_textarea").autoTextarea();
+	 
+     /*-----点击收藏-------*/
+     $(".x_btn_star").click(function(){
+        $(this).toggleClass("x_btn_faved")
+     })
+     /*-----点击下载-------*/
+     $(".x_btn_download").click(function(){
+        $(this).toggleClass("x_btn_downloaded")
+     })
+   
+    
+    /*-----滑动-左-----*/
+    $(".x_tab_content").on( "swipeleft", function( event ) { 
+         event.stopPropagation();  //阻止冒泡
+        
+         if(tabN==1){
+            $.ajax({  
+                    type:"get",  
+                    url:"play_list.html",  
+                    dataType:"html",  
+                    success:function(data){  
+                        $('#playList').html(data);
+                        setTimeout(function () {
+                            myScroll_play.refresh();
+                            //myScroll_play.scrollTo(0, 0, 0, IScroll.utils.ease.elastic);
+                        }, 0);
+                    } 
+            });
+         }
+         if(tabN==2){
+            $.ajax({  
+                    type:"get",  
+                    url:"play_comment.html",  
+                    dataType:"html",  
+                    success:function(data){  
+                        $('#playComment').html(data); 
+                        $('#playList').html('<div>&nbsp;</div>');
+                        setTimeout(function () {
+                            myScroll_play.refresh();
+                            //myScroll_play.scrollTo(0, 0, 0, IScroll.utils.ease.elastic);
+                        }, 0);
+                        $('#x_videoComment ul').prepend(strhtml);   
+                    } 
+               
+            });
+            
+         }
+
+         if( !conObj.is(":animated") ){ //判断"视频内容展示区域"是否正在处于动画
+             if( tabN == 3 ){ 
+                    return false;
+                }else{
+                    conObj.animate({ left : -(v_width * tabN)+'%' }, 300)
+                    tabN++;
+             }
+         }
+         $("#x_tabs_video li").eq(tabN-1).addClass("active").siblings().removeClass("active");
+    }); 
+    
+     /*-----滑动-右-----*/
+     $(".x_tab_content").on( "swiperight", function( event ) {
+         event.stopPropagation(); //阻止冒泡
+         if(tabN==3){
+            $.ajax({  
+                    type:"get",  
+                    url:"play_list.html",  
+                    dataType:"html",  
+                    success:function(data){  
+                        $('#playList').html(data);
+                        $('#playComment').html(' ');
+                        setTimeout(function () {
+                            myScroll_play.refresh();
+                            //myScroll_play.scrollTo(0, 0, 0, IScroll.utils.ease.elastic);
+                        }, 0);
+                    } 
+            });
+         }
+         if(tabN==2){
+            $.ajax({  
+				type:"get",  
+				url:"play_info.html",  
+				dataType:"html",  
+				success:function(data){  
+					$('#playInfo').html(data);  
+					$('#playList').html(' ');
+					setTimeout(function () {
+						myScroll_play.refresh();
+						//myScroll_play.scrollTo(0, 0, 0, IScroll.utils.ease.elastic);
+					}, 0);
+				} 
+            });
+         }
+         if( !conObj.is(":animated") ){    
+             if( tabN == 1 ){  
+                    return false;
+                }else{
+                    var numr=parseInt(tabN-2);
+                    conObj.animate({ left : -(v_width * numr)+'%' }, 300)
+                    tabN--;
+             }
+         }
+         $("#x_tabs_video li").eq(tabN-1).addClass("active").siblings().removeClass("active");
+    }); 
+    
+    /*-----选项卡-------*/
+    var tabN=1;
+    var v_width="100";
+    var conObj= $(".conBk");
+    $("#x_tabs_video li").each(function(i){
+        $(this).click(function(){
+            if(i==0){
+                conObj.animate({ left : 0 },300);
+                $.ajax({  
+                        type:"get",  
+                        url:"play_info.html",  
+                        dataType:"html",  
+                        success:function(data){  
+                            $('#playInfo').html(data);  
+                            $('#playList').html('<div>&nbsp;</div>');
+                            $('#playComment').html('<div>&nbsp;</div>'); 
+                            setTimeout(function () {
+                                myScroll_play.refresh();
+                                //myScroll_play.scrollTo(0, 0, 0, IScroll.utils.ease.elastic);
+                            }, 0);
+                        } 
+                });
+            }
+            if(i==1){
+                conObj.animate({ left : -(v_width * i)+'%' }, 300);
+                $.ajax({  
+                        type:"get",  
+                        url:"play_list.html",  
+                        dataType:"html",  
+                        success:function(data){  
+                            $('#playList').html(data);
+                            $('#playComment').html('<div>&nbsp;</div>');
+                            setTimeout(function () {
+                                myScroll_play.refresh();
+                                //myScroll_play.scrollTo(0, 0, 0, IScroll.utils.ease.elastic);
+                            }, 0);
+                        } 
+                });
+            }
+            if(i==2){
+                conObj.animate({ left : -(v_width * i)+'%' }, 300);
+                $.ajax({  
+                        type:"get",  
+                        url:"play_comment.html",  
+                        dataType:"html",  
+                        success:function(data){  
+                            $('#playComment').html(data);
+                            $('#playInfo').html('<div>&nbsp;</div>');
+                            setTimeout(function () {
+                                myScroll_play.refresh();
+                                //myScroll_play.scrollTo(0, 0, 0, IScroll.utils.ease.elastic);
+                            }, 0);
+                            $('#x_videoComment ul').prepend(strhtml);  
+                        } 
+                });
+            }
+            $(this).addClass("active").siblings().removeClass("active");
+            tabN=i+1;
+        })
+    })
+    
+    /*------添加评论------------*/   
+    $(document).on("click","#submit",function(){
+        if($(".x_vc_textarea").val().length > 0){//判断是否为空
+            var strid="note_"+RetRndNum(3);
+            var notedata={}; //创建json对象
+            notedata.nid=strid;
+            notedata.username="阿蒙";
+            notedata.txtcon=$(".x_vc_textarea").val();
+            var jsonnotedata=JSON.stringify(notedata) //json转为字符串，这样可以存到localstorage
+            localStorage.setItem(strid,jsonnotedata); 
+
+
+            var jsondata2=$.parseJSON(localStorage.getItem(strid))
+            var instanthtml='';
+            instanthtml+='<li><div class=x_vc_pic><div class=x_tx><img src=img/icon_tx01.png></div></div>'
+                +'<div class=x_vc_text>'
+                    +'<h4>' + jsondata2.username + '<span>1分钟前：</span></h4>'
+                    +'<p>' + jsondata2.txtcon + '</p>'
+                +'</div></li>';
+            $("#x_videoComment ul").prepend(instanthtml);
+            $(".x_vc_textarea").val('');
+
+            //iscroll 刷新高度
+            setTimeout(function () {myScroll_play.refresh();}, 0);
+
+         }else{
+           return false;
+         }
+
+    })
+    
+})    
+    
+//获取随机数
+function RetRndNum(n){
+	var strRnd = '';
+	for(var i =0; i < n; i++){
+		strRnd += Math.floor(Math.random()*10);
+	};
+	return strRnd;
+}  
+
+
+</script>
+</div>   
+</body>
+</html>

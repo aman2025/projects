@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>极客·爱学习</title>
+<link rel="stylesheet" href="css/jquery.mobile-1.4.4.css" /> 
+<link rel="stylesheet" href="css/iClass.css">   
+<script src="js/jquery-1.11.1.min.js"></script> 
+<script src="js/jquery.mobile-1.4.4.min.js"></script>
+</head>
+<body>
+<div id="pageDownload" class="pageDownload" data-role="page" data-theme="none">
+<style>
+
+</style>    <!--长按-弹出层-->
+    <div id="slideHeader" class="slideHeader">
+        <button data-role="none" id="x_download_cancel" class="x_download_cancel">取消</button>
+    </div>
+    <div id="slideFooter" class="slideFooter">
+        <div>
+            <a href="#"  class="x_download_selAll">全选</a>
+            <a href="#popDel" data-rel="popup"    data-transition="pop" class="x_download_del">删除</a>
+        </div>    
+    </div>
+    <!--//长按-弹出层-->
+    <!--popup 删除确认-->
+    <div data-role="popup" class="x_popUp"  id="popDel" data-position-to="window" data-tolerance="20,20,20,20" data-shadow="false" data-overlay-theme="b" data-corners="false">
+        <h1 data-role="none">删除确认</h1>
+        <div class="x_pop_con">
+            确定删除已选的课程吗&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="x_pop_tool">
+            <ul>
+                <li><a href="#" data-role="none" data-rel="back" id="x_confirm" class="x_pop_btn" >确定</a></li>
+                <li><a href="#" data-role="none" data-rel="back" class="x_pop_btn">取消</a></li>
+            </ul>
+         </div>
+    </div>
+    <!--//popup 删除确认-->
+    <div data-role="header" data-theme="none" class="x_header2"  >
+        <div>  <!--header中div包裹，取消了默认的按钮定位 ui-btn-right -->
+            <a href="#"  data-role="none" data-rel="back" class="x_btn_back" data-transition="slide" ></a>
+            <div class="tit_play">下载列表</div>
+            <button  data-role="none" id="x_download_edit" class="x_download_edit">编辑</button>
+        </div>
+    </div>
+    <div data-role="content" class="x_content"> 
+        <div id="x_download">
+            <div id="scroller">
+                 <!--下载列表-->
+                <div class="x_list x_download_list">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <img src="img/picList01.jpg">
+                                <div class="x_listCon">
+                                    <div>马克.扎克伯格清华访谈全程秀中文</div>
+                                </div>    
+                            </a>
+                        </li>
+                        <li >
+                            <a href="#">
+                                <img src="img/picList02.jpg">
+                                <div class="x_listCon">
+                                    <div>想要快乐，学会感恩</div>
+                                </div>    
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/picList03.jpg">
+                                <div class="x_listCon">
+                                    <div>TED:产品的人性化设计</div>
+                                </div>    
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/picList04.jpg">
+                                <div class="x_listCon">
+                                    <div>苹果CEO提姆库克访谈</div>
+                                </div>    
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/picList08.jpg">
+                                <div class="x_listCon">
+                                    <div>探索黑洞-7</div>
+                                </div>    
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/picList09.jpg">
+                                <div class="x_listCon">
+                                    <div>奥巴马谈连接教育</div>
+                                </div>    
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/picList06.jpg">
+                                <div class="x_listCon">
+                                    <div>用5中语言说早安</div>
+                                </div>    
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/picList04.jpg">
+                                <div class="x_listCon">
+                                    <div>苹果CEO提姆库克访谈</div>
+                                </div>    
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--//下载列表-->
+             </div>
+        </div>
+    </div>
+    <script>
+    $(function(){
+        
+        //iscroll5
+        var myScroll_download;
+        $("#pageDownload").on("pageshow",function(){
+            if(myScroll_download==null){
+                    setTimeout(function(){
+                      myScroll_download = new IScroll('#x_download', {
+                            tap:true,
+                            click:false,
+                            preventDefaultException:{tagName:/.*/},//解除默认事件锁定，调用tab，click等事件,不支持swipeleft
+                            scrollbars: true,
+                            mouseWheel: true,
+                            fadeScrollbars: true
+                        });
+                    },0)
+                    
+                }else{
+
+                    }
+        });
+        
+        //选中
+        $(".x_download_list li").on("click",function(){
+            $(this).find("span").toggleClass("x_cbox_seled")
+        });
+         
+        
+        //点击编辑-弹出头尾层
+        $("#x_download_edit").on("click",function(){
+            $("#slideHeader").animate({top:"0"},500);
+            $("#slideFooter").animate({bottom:"0"},500);
+            $(".x_download_list li").append("<span></span>");
+			
+	    })
+        
+        //长按
+        $(".x_download_list li").on("taphold",function(){
+            $(this).find("span").addClass("x_cbox_seled");
+            $("#x_download_edit").trigger("click");
+        })
+        //点击取消隐藏
+        $("#x_download_cancel").on("click",function(){
+            $("#slideHeader").animate({top:"-48px"},500);
+            $("#slideFooter").animate({bottom:"-54px"},500);
+            $(".x_download_list li span").remove();
+	    })
+        //点击确定
+        $("#x_confirm").click(function(){
+            $(".x_download_list li span.x_cbox_seled").parent().remove();
+            $("#x_download_cancel").trigger("click");
+            setTimeout(function () {
+                myScroll_download.refresh();
+            }, 0);
+            
+        })
+        
+        //点击全选
+        $(".x_download_selAll").click(function(){
+            if($(this).text()=="全选"){
+               $(".x_download_list li span").addClass("x_cbox_seled");
+                $(this).text("全不选");
+            }else if($(this).text()=="全不选"){
+                $(this).text("全选");
+                $(".x_download_list li span").removeClass("x_cbox_seled");
+            }
+            
+        })
+        
+    }); 
+    </script>
+</div>
+</body>
+</html>

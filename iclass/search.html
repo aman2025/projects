@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>极客·爱学习</title>
+<link rel="stylesheet" href="css/jquery.mobile-1.4.4.css" /> 
+<link rel="stylesheet" href="css/iClass.css">   
+<script src="js/jquery-1.11.1.min.js"></script> 
+<script src="js/jquery.mobile-1.4.4.min.js"></script>
+
+</head>
+<body>
+<div id="pageSearch" data-role="page" data-theme="none" >
+<style>
+.ui-input-search{
+    margin:.4em 0 0;
+    border: 0;
+    background: #555;
+    color: #aaa;
+}  
+
+</style>
+    <div data-role="header" data-theme="none"  class="x_header2"  >
+         <div class="x_search_head">
+            <input type="search" class="x_search_ipt"  name="search" id="search" data-clear-btn="true" data-corners="false"  placeholder="幸福学" >
+            <a href="#" class="x_search_cancel" data-role="none" data-rel="back">取消</a>
+         </div>
+    </div>
+    <!--搜索-->
+    <div class="x_content" data-role="content">
+        <div class="x_search" id="x_search">
+            <div id="scroller">
+                <div class="x_soBk">
+                    <div class="x_search_history">
+                        <div class="x_tit01"><span id="x_s_clear">清空记录</span>搜索记录</div>
+                        <div class="x_con01" id="x_s_history">
+                            <ul>
+                                <li>对话</li>
+                                <li>奇点大学北京太庙</li>
+                                <li>奇点公开课</li>
+                                <li>一生一世</li>
+                                <li>奥巴马谈教育</li>
+                                <li>哈弗公开课-幸福学</li>
+                                <li>姚仁禄-创意设计5000天</li>
+                            </ul>
+                            <div class="x_blank"></div>
+                        </div>
+                    </div>
+                    <div class="x_blank" style="height:1em"></div>
+                    <div class="x_search_history">
+                        <div class="x_tit01">热门搜索</div>
+                        <div class="x_con01">
+                            <ul>
+                                <li>探索黑洞</li>
+                                <li>TED</li>
+                                 <li>乔布斯访谈视频</li>
+                                <li>扎克伯格清华演讲</li>
+                                <li>麻省理工学院</li>
+                                <li>探索黑洞</li>
+                                <li>TED</li>
+                                 <li>乔布斯访谈视频</li>
+                                <li>扎克伯格清华演讲</li>
+                                <li>麻省理工学院</li>
+                                
+                                
+                            </ul>
+                            <div class="x_blank"></div>
+                        </div>
+                    </div>
+                    <div class="x_blank"></div>
+                </div>
+             </div>
+        </div>
+    <!--//搜索-->
+    </div>
+    <script>
+    $(function(){
+        var myScroll_search;
+        $("#pageSearch").on("pageshow",function(){
+            if(myScroll_search==null){
+                    setTimeout(function(){
+                      myScroll_search = new IScroll('#x_search', {
+                            tap:true,
+                            click:false, 
+                            preventDefaultException:{tagName:/.*/},//解除默认事件锁定，调用tab，click等事件,不支持swipeleft
+                            scrollbars: true,
+                            mouseWheel: true,
+                            fadeScrollbars: true
+                        });
+                    },0)
+                    
+                }else{
+
+                    }
+        });
+        
+       //清空记录 
+       $("#x_s_clear").click(function(){
+            $("#x_s_history ul").empty();
+       })
+    }); 
+    </script>
+</div>
+</body>
+</html>

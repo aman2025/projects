@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>极客·爱学习</title>
+<link rel="stylesheet" href="css/jquery.mobile-1.4.4.css" /> 
+<link rel="stylesheet" href="css/iClass.css">  
+<script src="js/iscroll.js"></script>    
+<script src="js/jquery-1.11.1.min.js"></script> 
+<script src="js/jquery.mobile-1.4.4.min.js"></script>
+  
+</head>
+<body>
+<div id="pageMy" data-role="page" data-theme="none" class="pageMar" >
+<style>
+#pageMy{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+</style>
+    <div data-role="header" data-theme="none"  class="x_header"  data-position="fixed"  data-tap-toggle="false" data-id="myheader">
+        <a href="#leftpanel"  data-role="none" class="x_btn_pannel" ></a>
+        <a href="search.html" data-role="none" data-transition="slide" class="ui-btn-right x_btn_search"></a>
+        <h1 class="hf">个人中心</h1>
+    </div>
+  
+        <div class="x_myInfo" id="x_myInfo">
+            <div id="scroller" >
+                <div class="x_miBk">
+                    <div class="x_mi01">
+                        <div class="tit01">
+                            <img src="img/icon_tx01.png">
+                            <span>阿蒙<label>QQ：2247367564</label></span>
+                        </div>
+                        <div class="tit02">
+                            <ul>
+                                <li><label>10</label><span>视频1</span></li>
+                                <li><label>122</label><span>订阅</span></li>
+                                <li><label>235</label><span>积分</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="x_blank2"></div>
+                    <div class="x_mi02">
+                        <ul>
+                            <li id="myList"><img src="img/icon_download.png"><span>我下载的</span></li>
+                            <li><img src="img/icon_email.png"><span>消息</span></li>
+                            <li><img src="img/icon_clock.png"><span>播放记录</span></li>
+                            <li><img src="img/icon_fav2.png"><span>收藏</span></li>
+                        </ul>
+                    </div>
+                    <div class="x_blank2"></div>
+                    <div class="x_mi02">
+                        <ul>
+                            <li><img src="img/icon_feeback.png"><span>帮助反馈</span></li>
+                            <li><img src="img/icon_setting.png"><span>设置</span></li>
+                            <li><img src="img/icon_feeback.png"><span>关于</span></li>
+                            <li><img src="img/icon_setting.png"><span>积分查询</span></li>
+                            <li><img src="img/icon_feeback.png"><span>个人简介</span></li>
+                        </ul>
+                    </div>
+                    <div class="x_blank"></div>
+                </div>    
+            </div>
+        </div>
+    
+    <!--//个人信息-->
+   
+    <div data-role="footer" data-theme="none"  class="x_footer"  data-position="fixed"  data-tap-toggle="false" data-id="myfooter">
+        <div class="x_navbar">
+            <ul class="ui-grid-c">
+                <li class="ui-block-a"><a href="#" class="x_icon_home" >首页</a></li>
+                <li class="ui-block-b"><a href="#" class="x_icon_list" >课程</a></li>
+                <li class="ui-block-d active"><a href="#" class="x_icon_user" >我的</a></li>
+                <li class="ui-block-c"><a href="#pageShare" data-rel="popup" class="x_icon_share" data-position-to="window" data-transition="pop" >分享</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            var myScroll_my;
+            $("#pageMy").on("pageshow",function(){
+                if(myScroll_my==null){
+                        setTimeout(function(){
+                          myScroll_my = new IScroll('#x_myInfo', {
+                                tap:true,
+                                click:false, 
+                                preventDefaultException:{tagName:/.*/},//解除默认事件锁定，调用tab，click等事件,不支持swipeleft
+                                scrollbars: true,
+                                mouseWheel: true,
+                                interactiveScrollbars: true,
+                                shrinkScrollbars: 'scale',
+                                fadeScrollbars: true
+                            });
+                        },0)
+                    }else{
+
+                        }
+            });
+			
+			
+            /*转场*/    
+        	$("#pageMy .x_icon_home").click(function(){
+				$.mobile.changePage("index.html", {transition:"slide",reverse:true});
+				console.log("my-to-index");
+				})
+			$("#pageMy .x_icon_list").click(function(){
+				$.mobile.changePage("all.html", {transition:"slide",reverse:true});
+				console.log("my-to-all");
+			})
+
+			
+            //跳转-我的下载
+            $(".x_mi02 li").on("click",function(){
+                //event.stopPropagation(); //阻止冒泡
+                $.mobile.changePage("download.html", {transition:"slide"}, false, false);
+            })
+            
+            
+            /*滑动-右
+            $("#pageMy").bind("swiperight",function(){
+                $.mobile.changePage("all.html", {transition:"slide",reverse:true}, true, true);
+                
+            })*/
+           
+        }); 
+        
+        
+    </script>
+</div>
+
+</body>
+</html>
