@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no" />
+<title>miyou</title>
+<link rel="stylesheet" href="css/club.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script>
+$(function(){
+	 /*弹出层-领取优惠券*/
+	$("#get").on("click",function(e){
+		 	e.preventDefault();
+			$(".qrcode-pop").show();
+			$("#mask").show();
+	})
+	
+	$("#mask").on("click",function(e){
+		 	e.preventDefault();
+			$(".qrcode-pop").hide();
+			$("#mask").hide();
+	})
+
+})
+</script>
+</head>
+<body>
+<div class="free-pic">
+	<img src="images/free-pic.png">
+</div>
+<!--优惠券-->
+<div class="free-info">
+	<h3>20元免费券</h3>
+    <ul>
+    	<li>VIP折扣：在前台预先出示电子VIP卓煜会员卡即可享受项目9折优惠</li>
+    	<li>本抵用券不找零，不返现，不得与本店其它优惠同时使用</li>
+    	<li>一次消费仅限使用一张免费券</li>
+    </ul>
+</div>
+<!--//优惠券-->
+<!--店铺信息-->
+<div class="shop-info-wrap">
+   <div class="shop-info-outline">
+    <div class="shop-info">
+    	<div class="name">
+        	<h2>AHFA  IE咖啡店</h2>
+            <p>营业时间：09：00-22:00</p>
+            <p><i class="vip-star s3"></i></p>
+        </div>
+        <div class="telephone">
+        	<p>地址：厦门市xx路xx号</p>
+			<p>电话：059X-7875XXX</p>
+            <a href="tel:13801380000"><i class="icon-telephone"></i></a>
+            <a href="#"><i class="icon-location2"></i></a>
+        </div>
+        <div class="introduce">
+        	店铺介绍：店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍店铺介绍
+        </div>
+    </div>
+   </div>
+</div>
+<!--//店铺信息-->
+<!--评论-->
+<div class="user-title">&gt;&gt;&gt; 评论</div>
+<div class="comment-list">
+    <ul>
+      <li>
+          <div class="pic" style="background-image:url(images/avatar.png)"></div>
+          <dl class="info">
+            <dt>此处为昵称<i class="vip-star"></i></dt>
+            <dd>
+               店家热情，店铺环境好！
+            </dd>
+          </dl>
+       </li>
+      <li>
+          <div class="pic" style="background-image:url(images/avatar.png)"></div>
+          <dl class="info">
+            <dt>此处为昵称<i class="vip-star s2"></i></dt>
+            <dd>
+               店家热情，店铺环境好！
+            </dd>
+          </dl>
+       </li>
+    </ul>
+</div>
+<!--//评论-->
+<div class="get-free-wrap">
+	<button class="btn" id="get">领取免费券</button>
+</div>
+<div class="mask" id="mask"></div>
+<div class="qrcode-pop">
+	<img src="images/qrcode.png">
+    <span>请将二维码提交联盟商家扫描       或截图分享给好友使用</span>
+</div>
+</body>
+</html>

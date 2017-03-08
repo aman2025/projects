@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no" />
+<title>miyou</title>
+<link rel="stylesheet" href="css/club.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script>
+$(function(){
+	document.body.addEventListener('touchstart', function(){});
+	//搜索
+	$("#search").focus(function(){
+		if($(this).val() == "搜索"){
+			$(this).addClass("focus");
+			$(this).val("")	;
+		}
+	})
+	$("#search").blur(function(){
+		if($(this).val() == "搜索" || $(this).val() == ""){
+			$(this).removeClass("focus");
+			$(this).val("搜索");
+		}
+	})
+	
+	/*分类选择*/
+	var flag;
+	$("#category-tabs li").each(function(index){
+		$(this).click(function(e){
+			e.preventDefault();
+			if($(this).hasClass("active")){
+				$(".dropdown-mask").hide();	
+				$("#dropdown div").eq(index).hide();
+				$("#category-tabs li").removeClass("active");
+			}else{
+				$(".dropdown-mask").show();
+				$(this).addClass("active").siblings().removeClass("active");
+				$("#dropdown > div").eq(index).show().siblings().hide();
+				if(index==0){
+					setTimeout(function () {
+                            myScroll.refresh();
+					}, 0)	
+				}
+			}
+			flag=index;
+		})	
+	})
+	
+	$(".dropdown-mask").on("click",function(e){
+		$(".dropdown-mask").hide();
+		$("#dropdown div").eq(flag).hide();
+		$("#category-tabs li").removeClass("active");
+	})
+	
+	$("#dropdown li").on("click",function(e){
+		$(".dropdown-mask").hide();
+		$("#dropdown div").eq(flag).fadeOut("15");
+		$("#category-tabs li").removeClass("active");
+	})
+	/*弹出层-市区*/
+	$("#city").on("click",function(e){
+		 	e.preventDefault();
+			$(".city-pop").show();
+			$("#mask").show();
+	})
+	
+	$("#mask").on("click",function(e){
+		 	e.preventDefault();
+			$(".city-pop").hide();
+			$("#mask").hide();
+	})
+	/*选中市区*/
+	$("#city-list li").each(function(index){	
+		  $(this).on("click",function(e){
+				e.preventDefault();
+				$(".city-pop").hide();
+				$("#mask").hide();
+				//$("#city").text($(this).text());
+			})
+	})
+})
+</script>
+</head>
+<body>
+<div class="location">
+	<span id="city">厦门市区xx路xx号</span>
+  <button class="btn">厦门</button>
+</div>
+<!--市区-->
+<div class="mask" id="mask"></div>
+<div class="city-pop">
+  <ul class="c-item" id="city-list">
+      <li class="active"><span>厦门</span></li>
+      <li><span>漳州</span></li>
+      <li><span>泉州</span></li>
+      <li><span>福州</span></li>
+      <li><span>宁德</span></li>
+      <li><span>三明</span></li>
+      <li><span>莆田</span></li>
+      <li><span>南平</span></li>
+      <li><span>龙岩</span></li>
+  </ul>
+</div>
+<!--//市区-->
+<div class="search-wrap so-padd">
+	<input type="text" class="search" id="search" value="搜索">
+</div>
+<!--分类-->
+<div class="category">
+    <div class="category-tabs"  id="category-tabs">
+        <ul>
+            <li>位置<i></i></li>
+            <li>行业<i></i></li>
+            <li>排序<i></i></li>
+        </ul>
+    </div>
+    <div id="dropdown" class="dropdown">
+      <div style="display:none">
+        <ul class="c-item">
+            <li class="active"><span>全部地区</span></li>
+            <li><span>海沧区</span></li>
+            <li><span>集美区</span></li>
+            <li><span>湖里区</span></li>
+            <li><span>同安区</span></li>
+            <li><span>翔安区</span></li>
+            <li><span>思明区</span></li>
+        </ul>
+      </div>
+      <div style="display:none">
+        <ul class="c-item">
+            <li class="active"><span>全部行业</span></li>
+            <li><span>娱乐放松</span></li>
+            <li><span>中式餐饮</span></li>
+            <li><span>休闲美食</span></li>
+            <li><span>运动健身</span></li>
+            <li><span>亲子教育</span></li>
+            <li><span>其他行业</span></li>
+        </ul>
+      </div>
+      <div style="display:none">
+        <ul class="c-item2">
+            <li class="active"><span>最新上架</span></li>
+            <li><span>距离最近</span></li>
+            <li><span>最受欢迎</span></li>
+            <li><span>免费最多</span></li>
+        </ul>
+      </div>
+    </div>
+</div>
+<div class="dropdown-mask"></div>
+<!--//分类-->
+<div class="vip-detail-wrap">
+	<a href="coupon-detail.html">
+	<div class="vip-detail">
+		<div class="vip-pic">
+			 <img src="images/vip-pic.png">
+				 <i class="vip-star s1"></i>
+		</div>
+		<dl>
+			<dt>20元优惠券</dt>
+				<dd>此处为商店名称<span>2.1km</span></dd>
+		</dl>
+  </div>
+  </a>
+  <a href="coupon-detail.html">
+	<div class="vip-detail">
+		<div class="vip-pic">
+			 <img src="images/vip-pic.png">
+				 <i class="vip-star s1"></i>
+		</div>
+		<dl>
+			<dt>20元优惠券</dt>
+				<dd>此处为商店名称<span>2.1km</span></dd>
+		</dl>
+  </div>
+  </a>
+</div>
+<!--翻页-->
+<div class="pagination">
+	<div class="pagination-item">
+		<a href="#" class="page-prev">上一页</a>
+		<span>
+			<em>5</em>/<label>100</label>
+		</span>
+		<a href="#" class="page-next">下一页</a>
+	</div>
+	<div class="pagination-go">
+		第 <input type="text"> 页
+		<a href="#" class="go">跳转</a>
+	</div>
+</div>
+<!--//翻页-->
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no" />
+<title>miyou</title>
+<link rel="stylesheet" href="css/miyou.css"> 
+<link rel="stylesheet" href="css/swiper.min.css" />  
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script src="js/swiper.min.js"></script> 
+<script src="js/jquery.Spinner.js"></script> 
+<script>
+$(function(){
+	/***query.Spinner***/
+	$(".spinner").Spinner();
+	
+	//总金额
+	$(document).on("click",".spinner a",function(){
+		$("#price").text('￥'+$(".spinner").find(".Amount").val()*2000);/*个数乘以单价*/
+	})
+	
+	/*Siwper*/
+	var swiper01 = new Swiper('#slide01', {
+										pagination: '.swiper-pagination',
+										autoplay:2000
+									});
+	
+	/*加入购物车*/
+	$("#add").on("click",function(){
+		$("#shop-car").show()
+	})
+	
+	//点击遮罩层隐藏
+	$(".mask").on("click",function(e){
+			e.stopPropagation()
+			 $("#shop-car").fadeOut(200)		 
+	})
+});
+</script>
+</head>
+<body>
+<!--头像-->
+<div class="avatar-wrap3">
+	<i class="avatar" style="background-image:url(images/avatar2.png);"></i>
+	<span>昵称</span>
+	<a href="#">
+		<i class="icon-search-list"></i>
+		我的订单
+	</a>
+</div>
+<!--//头像-->
+<!--swiper-->
+<section class="swiper-container swiper01" id="slide01">
+	<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<img src="images/banner01.png">
+			</div>
+			<div class="swiper-slide">
+				<img src="images/banner01.png">
+			</div>
+	</div>
+	<!-- Add Pagination -->
+	<div class="swiper-pagination"></div>
+</section>
+<!--//swiper-->
+<!--详情-->
+<div class="product-title">
+	<h3>瑞士军刀书包 </h3>
+	<span>¥2000</span>
+	<label>快递：包邮</label>
+</div>
+<div class="product-info">
+	<h3>商品详情</h3>
+	<p>此处为商品详情介绍此处为商品详情介绍此处为商品详情介绍此处为商品详情介绍</p>
+	<p>此处为商品详情介绍此处为商品详情介绍此处为商品详情介绍此处为商品详情介绍此处为商品详情介绍此处为商品详情介绍此处为商品详情介绍此处为商品详情介绍</p>
+</div>
+<!--//详情-->
+<!--购物导航栏-->
+<div class="mall-bar">
+	<a href="#"><i class="icon-mall01"></i>客服</a>
+	<a href="mall-car-list.html"><i class="icon-mall02"></i>购物车</a>
+	<a href="javascript:;" id="add">加入购物车</a>
+	<a href="mall-order.html">立即购买</a>
+</div>
+<!--//购物导航栏-->
+<!--加入购物车-->
+<div id="shop-car" style="display: none">
+	<div class="mask"></div>
+	<div class="shop-car">
+		<div class="product-pic">
+			<img src="images/pic01.png">
+		</div>
+		<div class="product-name">
+			瑞士军刀书包 
+			<span>购买数量</span>
+		</div>
+		<div class="product-num">
+			<span id="price">￥2000</span>
+			<div class="spinner"></div>
+		</div>
+	</div>
+</div>
+<!--//加入购物车-->
+</body>
+</html>

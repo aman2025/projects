@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no" />
+<title>miyou</title>
+<link rel="stylesheet" href="css/club.css"> 
+<link rel="stylesheet" href="css/swiper.min.css" />   
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script>
+$(function(){
+	//tabs
+	$.TabChange("coupon-tabs",1)
+	
+	/*Siwper*/
+	var swiper01 = new Swiper('#slide01', {
+										pagination: '.swiper-pagination',
+										autoplay:2000
+									});
+
+});
+	/*tabs切换*/
+$.TabChange = function(obj,num){
+	$("li","#" + obj).each(function(index){
+			$(this).click(function(i){
+			 	$("div.tab_box" + num + " > div").eq(index).show().siblings().hide();
+				$(this).addClass("curr").siblings().removeClass("curr");
+			})													
+	})
+}
+</script>
+</head>
+<body>
+<div class="coupon-tabs t2">
+    <ul id="coupon-tabs">
+        <li>积分规则</li>
+        <li class="curr">积分兑换</li>
+    </ul>
+</div>
+<div class="tab_box1">
+  <!-- 积分规则-->
+  <div style="display: none">积分规则</div>
+  <!-- //积分规则-->
+  <!-- 积分兑换-->
+  <div>
+  	<!--swiper-->
+	<section class="swiper-container swiper01" id="slide01">
+		<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<img src="images/banner01.png">
+				</div>
+				<div class="swiper-slide">
+					<img src="images/banner01.png">
+				</div>
+		</div>
+		<!-- Add Pagination -->
+		<div class="swiper-pagination"></div>
+	</section>
+	<!--//swiper-->
+	<!--积分-->
+	<div class="total-score">
+		<ul>
+				<li><i class="icon-scores"></i>当前积分100</li>
+				<li><i class="icon-records"></i><a href="shop-note.html">兑换记录</a></li>
+			</ul>
+	</div>
+	<!--列表-->
+
+	<div class="shop-list">
+		<ul>
+				<li>
+						<a href="exchange.html">
+									<img src="images/shop-pic01.png">
+									<div>HFEJS运动水杯<label>630积分+5元</label></div>
+							</a>
+					</li>
+				<li>
+							<a href="exchange.html">
+									<img src="images/shop-pic01.png">
+									<div>HFEJS运动水杯<label>630积分+5元</label></div>
+							</a>
+					</li>
+				<li>
+						<a href="exchange.html">
+									<img src="images/shop-pic01.png">
+									<div>HFEJS运动水杯<label>630积分+5元</label></div>
+							</a>
+					</li>
+				<li>
+							<a href="exchange.html">
+									<img src="images/shop-pic01.png">
+									<div>HFEJS运动水杯<label>630积分+5元</label></div>
+							</a>
+					</li>
+				<li>
+						<a href="#exchange.html">
+									<img src="images/shop-pic01.png">
+									<div>HFEJS运动水杯<label>630积分+5元</label></div>
+							</a>
+					</li>
+				<li>
+							<a href="exchange.html">
+									<img src="images/shop-pic01.png">
+									<div>HFEJS运动水杯<label>630积分+5元</label></div>
+							</a>
+					</li>
+			</ul>
+	</div>
+  </div>
+  <!-- //积分兑换-->
+ </div>
+	
+</body>
+</html>

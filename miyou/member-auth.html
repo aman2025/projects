@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no" />
+<title>miyou</title>
+<link rel="stylesheet" href="css/club.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script>
+$(function(){
+	/*解决移动端active伪类效果*/
+	document.body.addEventListener('touchstart', function(){});
+	//tabs
+	$.TabChange("coupon-tabs",1)
+})
+</script>
+</head>
+<body>
+<div class="profile">
+    <div class="pic" style="background-image:url(images/avatar2.png)"></div>
+    <dl class="info">
+        <dt>昵称</dt>
+        <dd>会员编号 ：4613275545445 </dd>
+        <dd>会员等级：2</dd>
+    </dl>
+</div>
+<div class="member-auth">
+	<dl>
+    	<dt>会员有效期：2016/08/12-2017/08/12</dt>
+        <dd>剩余全免费次数<span>25</span></dd>
+        <dd>剩余抢免费次数<span>11</span></dd>
+    </dl>
+</div>
+</body>
+</html>

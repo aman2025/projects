@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no" />
+<title>miyou</title>
+<link rel="stylesheet" href="css/miyou.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script src="js/jquery.Spinner.js"></script> 
+<script>
+$(function(){
+	
+	//spinner组件
+	$(".spinner").Spinner();
+	
+	//总金额
+	$(document).on("click",".spinner a",function(){
+		$(this).parent().next().text('￥'+$(this).parent().find(".Amount").val()*2000);/*个数乘以单价*/
+	})
+	
+	
+});
+</script>
+
+</head>
+<body>
+
+<div class="order-title">
+	<input class="radio" type="checkbox" checked>
+	<span>店铺名称 </span>
+	<a href="mall-car-list.html">完成</a>
+</div>
+<!--商品简述-->
+<div class="order-show">
+	<div class="product-check">
+		<input class="radio" type="checkbox" checked>
+	</div>
+	<div class="product-pic">
+		<img src="images/pic01.png">
+	</div>
+	<div class="product-name">
+		<p class="spinner"></p>
+		<p>¥2000</p>
+	</div>
+	<div class="product-del">删除</div>
+</div>
+<div class="order-show">
+	<div class="product-check">
+		<input class="radio" type="checkbox">
+	</div>
+	<div class="product-pic">
+		<img src="images/pic01.png">
+	</div>
+	<div class="product-name">
+		<p class="spinner"></p>
+		<p>¥2000</p>
+	</div>
+	<div class="product-del">删除</div>
+</div>
+<!--//商品简述-->
+
+<!--提交订单-->
+<div class="order-bar choose">
+	<dl>
+		<dt>
+			<lable>
+				<input class="radio" type="checkbox" checked> 全选
+			</lable>
+		</dt>
+	</dl>
+	<a href="#" class="del-car">删除</a>
+</div>
+<!--//提交订单-->
+</body>
+</html>

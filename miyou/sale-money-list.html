@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no" />
+<title>miyou</title>
+<link rel="stylesheet" href="css/miyou.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script>
+/*tabs切换组件*/
+$.TabChange = function(obj,num){
+	$("li","#" + obj).each(function(index){
+			$(this).click(function(i){
+			 	$("div.tab-box" + num + " > div").eq(index).show().siblings().hide();
+				$(this).addClass("curr").siblings().removeClass("curr");
+			})													
+	})
+}
+$(function(){
+	$.TabChange("tabs",1)
+})
+</script>
+</head>
+<body>
+<div class="header-sale">
+	<a class="icon-back" href="javascrit:"></a>
+	佣金明细（0）
+</div>
+<!--tabs-->
+<div class="tabs" id="tabs">
+	<ul>
+		<li class="curr">全部</li>
+		<li>待审核</li>
+		<li>待打款</li>
+		<li>已打款</li>
+		<li>无效</li>
+	</ul>
+</div>
+<div class="tab-box1">
+	<div>
+		<!--全部-->
+		<div class="money-list">
+			<div class="money-code">编号：CAHH4567891888888<span>+0.00</span></div>
+			<div class="money-num">
+				<p>申请佣金：2.00</p>
+				<p>2016-10-11 17:58</p>
+				<p>待审核</p>
+			</div>
+		</div>
+		<div class="money-list">
+			<div class="money-code">编号：CAHH4567891888888<span>+0.00</span></div>
+			<div class="money-num">
+				<p>申请佣金：2.00</p>
+				<p>2016-10-11 17:58</p>
+				<p>待打款</p>
+			</div>
+		</div>
+		<div class="money-list">
+			<div class="money-code">编号：CAHH4567891888888<span>+0.00</span></div>
+			<div class="money-num">
+				<p>申请佣金：2.00</p>
+				<p>2016-10-11 17:58</p>
+				<p>已打款</p>
+			</div>
+		</div>
+		<div class="money-list">
+			<div class="money-code">编号：CAHH4567891888888<span>+0.00</span></div>
+			<div class="money-num">
+				<p>申请佣金：2.00</p>
+				<p>2016-10-11 17:58</p>
+				<p>无效</p>
+			</div>
+		</div>
+		<!--//全部-->
+	</div>
+	<div>待审核</div>
+	<div>待打款</div>
+	<div>已打款</div>
+	<div>无效</div>
+</div>
+<!--//tabs-->
+</body>
+</html>
