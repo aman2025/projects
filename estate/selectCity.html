@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>王牌置业</title>
+<link rel="stylesheet" href="css/estate.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script src="http://api.map.baidu.com/api?v=2.0" type="text/javascript"></script> 
+<script>
+$(function(){
+	/*解决移动端active伪类效果*/
+	document.body.addEventListener('touchstart', function(){});
+	
+	//滚动显示对应的字母
+	 var timeout = false; 
+	 $(window).scroll(function(){
+		 
+		//停止滚动隐藏
+		if (timeout){clearTimeout(timeout);} 
+		timeout = setTimeout(function(){ 
+				$(".character-big").fadeOut() 
+		},500);
+		
+		//显示当前大字母
+		var menu = $("#character-menu");
+		var curId = "";
+		var top = $(document).scrollTop(); //滚动条位置
+		var items = $(".optItem");    //查找.optItem对应的ID值
+		items.each(function(){
+					var m = $(this);                        
+					var itemsTop = m.offset().top;  //获取当前类的top偏移量
+					if(top > itemsTop-260){
+							curId ="#" + m.attr("id");
+							$(".character-big").fadeIn().text(curId.split("#")[1]);
+					}else{
+							return false;
+					}
+		});	
+		
+		 var curLink = menu.find(".active");
+		 if( curId && curLink.attr("href") != curId ){
+			     curLink.removeClass("active");
+           menu.find( "[href=" + curId + "]" ).addClass("active")
+     }
+	})
+})
+function getLocation(){
+	
+	 var options={
+			 enableHighAccuracy:true, 
+			 maximumAge:1000
+	 }
+	 if(navigator.geolocation){
+			 //浏览器支持geolocation
+			 navigator.geolocation.getCurrentPosition(onSuccess,onError,options);
+	 }else{
+			 //浏览器不支持geolocation
+			 alert('您的浏览器不支持地理位置定位');
+	 }
+}
+//成功时
+function onSuccess(position){
+	 //返回用户位置
+	 //经度
+	 var longitude =position.coords.longitude;
+	 //纬度
+	 var latitude = position.coords.latitude;
+               
+    //根据经纬度获取地理位置，不太准确，获取城市区域还是可以的
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(longitude,latitude);
+    var gc = new BMap.Geocoder();
+    gc.getLocation(point, function(rs){
+       var addComp = rs.addressComponents;
+			 $("#city-get").html("<span>" + addComp.city + "</span>");
+		});
+}
+ //失败时
+ function onError(error){
+		 switch(error.code){
+				 case 1:
+				 alert("位置服务被拒绝");
+				 break;
+				 case 2:
+				 alert("暂时获取不到位置信息");
+				 break;
+				 case 3:
+				 alert("获取信息超时");
+				 break;
+				 case 4:
+					alert("未知错误");
+				 break;
+		 }
+ }
+ window.onload=getLocation;
+ 
+</script>
+<style>
+.character-show a{
+  display:block;
+	width:18px;
+	height:18px;
+	line-height:15px;
+	margin:1px 0;
+	text-align:center;
+	color:#bfbfbf;
+	text-decoration:none;
+}
+
+.character-show a:active,.character-show a.active{
+  background:#f30;
+	color:#fff;
+	border-radius:50%;
+}
+</style>
+</head>
+<body class="e-bg">
+<!--头部-->
+<header class="header">
+  <a href="javascript:history.go(-1);" class="back" ></a>
+  <a href="#" class="more pr" ></a>
+  <h1>城市选择</h1>
+</header>
+<!--//头部-->
+<div class="blank-top"></div>
+<!--搜索-->
+<div class="search-box">
+	<div><input type="text" placeholder="输入城市名称"></div>
+  <a href="javascript:void(0)">查找</a>
+</div>	
+<!--//搜索-->
+<!--城市列表-->
+<div class="city-title">定位城市</div>
+<div class="city-location">
+	<div class="city-get" id="city-get"><label><img src="img/loading.gif">正在定位中...</label></div>
+  <!--<div class="city-get" id="city-get"><span>福州</span></div>-->
+</div>
+<div class="city-title">热门城市</div>
+<div class="city-list">
+	<ul>
+  	<li>北京</li>
+  	<li>上海</li>
+  	<li>广州</li>
+  	<li id="A" class="optItem">深圳</li>
+  </ul>
+</div>
+<div class="city-title">A</div>
+<div class="city-list">
+	<ul>
+  	<li>鞍山</li>
+  	<li>阿拉善</li>
+  	<li>安庆</li>
+  	<li>安阳</li>
+  	<li>阿坝藏族羌族</li>
+  	<li>安顺</li>
+  	<li>阿里</li>
+  	<li>安康</li>
+  	<li>澳门</li>
+  	<li>安吉</li>
+  	<li id="B" class="optItem">阿勒泰</li>
+  </ul>
+</div>
+<div class="city-title">B</div>
+<div class="city-list">
+	<ul>
+  	<li>璧山</li>
+  	<li>北京</li>
+  	<li>保定</li>
+  	<li>包头</li>
+    <li>滨州</li>
+    <li>蚌埠</li>
+    <li>宝鸡</li>
+    <li>北海</li>
+    <li>毕节</li>
+    <li>巴中</li>
+    <li>毕节</li>
+    <li>亳州</li>
+    <li>保亭</li>
+    <li id="C" class="optItem">白沙</li>
+  </ul>
+</div>
+<div class="city-title">C</div>
+<div class="city-list">
+	<ul>
+  	<li>长乐</li>
+  	<li>长寿</li>
+  	<li>长沙</li>
+  	<li>重庆</li>
+    <li>常熟</li>
+    <li>成都</li>
+    <li>长春</li>
+    <li>常州</li>
+    <li>承德</li>
+    <li>沧州</li>
+    <li>长治</li>
+    <li>赤峰</li>
+    <li>朝阳</li>
+    <li>滁州</li>
+  </ul>
+</div>
+<!--//城市列表-->
+<!--//字母表-->
+<div class="character-show" id="character-menu">
+	<a href="#A" class="active">A</a>
+	<a href="#B">B</a>
+	<a href="#C">C</a>
+	<a href="#D">D</a>
+	<a href="#E">E</a>
+	<a href="#F">F</a>
+	<a href="#G">G</a>
+	<a href="#H">H</a>
+	<a href="#I">I</a>
+	<a href="#J">J</a>
+	<a href="#K">K</a>
+	<a href="#L">L</a>
+	<a href="#M">M</a>
+	<a href="#N">N</a>
+	<a href="#O">O</a>
+	<a href="#P">P</a>
+	<a href="#Q">Q</a>
+	<a href="#R">R</a>
+	<a href="#S">S</a>
+	<a href="#T">T</a>
+	<a href="#U">U</a>
+	<a href="#V">V</a>
+	<a href="#W">W</a>
+	<a href="#X">X</a>
+	<a href="#Y">Y</a>
+	<a href="#Z">Z</a>
+</div>
+<!--字母表-->
+<div class="character-big" style="display:none">M</div>
+
+</body>
+</html>

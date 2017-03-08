@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>王牌置业</title>
+<link rel="stylesheet" href="css/estate.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script>
+$(function(){
+		/*解决移动端active伪类效果*/
+		document.body.addEventListener('touchstart', function(){});
+	 /*密码输入框焦点*/
+	 $(".icon-psw input").bind('focus',function(){
+			$(this).parent().addClass("active");
+			$(".icon-user").removeClass("active");
+			 
+	 }).bind('blur',function(){ 
+	 		$(this).parent().removeClass("active")
+   });  
+})
+</script>
+</head>
+<body>
+<!--头部-->
+<header class="header">
+  <a href="javascript:history.go(-1);" class="back" ></a>
+  <h1>更换绑定手机</h1>
+</header>
+<!--//头部-->
+<!--注册-->
+<div class="main-login">
+  <!--表单-->
+  <div class="login-form  register-form">
+  	<div class="login-tip" id="login-tip" style="display:none"><label></label><i></i><span id="tip-text"></span></div>
+  	<ul>
+    	<li>
+      	<label><span class="text-primary">失落小佛仙</span>  您已绑定手机</label>
+      	<div>
+          <input type="text" id="user" placeholder="手机号">
+        </div>  
+      </li>
+    	<li  class="icon-psw">
+      	<label>如果您已更换了手机号，请及时更新</label>
+      	<div>
+        	<span></span>
+          <input type="password" id="psw" class="ipt-radius" placeholder="输入登录密码">
+        </div>  
+      </li>
+    </ul>
+  </div>  
+  <a href="#" class="btn btn-login" id="btn-login">下一步</a>
+  <!--//表单-->
+</div>  
+<!--//注册-->
+</body>
+</html>

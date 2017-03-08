@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>王牌置业</title>
+<link rel="stylesheet" href="css/estate.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script>
+$(function(){
+	/*解决移动端active伪类效果*/
+	document.body.addEventListener('touchstart', function(){});
+})
+</script>
+</head>
+<body class="e-bg">
+<!--头部-->
+<header class="header">
+  <a href="javascript:history.go(-1);" class="back" ></a>
+  <h1>身份验证</h1>
+</header>
+<!--//头部-->
+<div class="blank-top"></div>
+<div class="main">
+  <!--马上验证-->
+  <div class="pictext-box">
+    <div class="icon-card"></div>
+    <h5 class="text-primary">失落小佛仙</h5>
+    <p>
+      您还没有通过身份验证<br>
+      身份验证后您才可以提取佣金<br>
+      并且享受更多特权奖励<br>
+     </p>
+  </div>
+  <!--//马上验证-->
+  <a class="btn btn-full" >马上认证</a>
+</div>
+</body>
+</html>

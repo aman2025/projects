@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>王牌置业</title>
+<link rel="stylesheet" href="css/swiper.min.css" /> 
+<link rel="stylesheet" href="css/estate.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script src="js/jquery.touchSwipe.min.js"></script>
+<script src="js/swiper.min.js"></script> 
+<script>
+var IMG_WIDTH=0;
+var currentImg = 0;
+var maxImages = 4;
+var speed = 300;
+var imgs;
+
+$(function(){
+	/*解决移动端active伪类效果*/
+	document.body.addEventListener('touchstart', function(){});
+	
+	
+	/*滑屏手势*/
+	IMG_WIDTH = $(window).width();
+	imgs = $(".tabs-box");
+	$(".tabs-box").swipe( { swipeStatus:swipe2, allowPageScroll:"vertical",threshold: 50} );
+	$(window).resize(function () { //屏幕改变时初始化宽度
+			IMG_WIDTH = $(window).width(); 
+			$("#nav-tabs a").eq(currentImg).trigger("click");
+	});
+			
+	function swipe2(event, phase, direction, distance) {
+		if (phase == "move" && (direction == "left" || direction == "right")) {
+				var duration = 0;
+	
+				if (direction == "left") {
+						scrollImages((IMG_WIDTH * currentImg) + distance, duration);
+				} else if (direction == "right") {
+						scrollImages((IMG_WIDTH * currentImg) - distance, duration);
+				}
+	
+		} else if (phase == "cancel") {
+				scrollImages(IMG_WIDTH * currentImg, speed);
+		} else if (phase == "end") {
+				if (direction == "right") {
+						previousImage();
+				} else if (direction == "left") {
+						nextImage();
+				}
+		}
+	}
+	
+	function previousImage() {
+		currentImg = Math.max(currentImg - 1, 0);
+		scrollImages(IMG_WIDTH * currentImg, speed);
+		changeTab(currentImg);
+	}
+	
+	function nextImage() {
+		currentImg = Math.min(currentImg + 1, maxImages - 1);
+		scrollImages(IMG_WIDTH * currentImg, speed);
+		changeTab(currentImg);
+	}
+	
+	function scrollImages(distance, duration) {
+		//移动的速率，可以平滑滑动
+		imgs.css("transition-duration", (duration / 1000).toFixed(1) + "s"); 
+		$(".nav-line").css("transition-duration", (duration / 1000).toFixed(1) + "s"); 
+	
+		var value = (distance < 0 ? "" : "-") + Math.abs(distance).toString();
+		imgs.css("transform", "translate3d(" + value + "px,0,0)");
+		$(".nav-line").css("transform", "translate3d(" + (-value/4) + "px,0,0)");
+	}
+	//点击tab选项
+	$("nav a").each(function(index){
+		$(this).on("click",function(){
+			$(this).addClass("active").siblings().removeClass("active");
+			currentImg=index;
+			scrollImages(IMG_WIDTH * currentImg, speed);
+			changeTab(index);
+			var dis=index*100;
+			$(".nav-line").css("transform", "translate3d("+ dis +"%,0,0)");
+		})
+	})
+
+	/*切换tab*/
+	function changeTab(num){
+			if(num==1){
+				//ajax加载-国内
+				$.ajax({  
+					type:"get",  
+					url:"news_guonei.html",  
+					dataType:"html",  
+					success:function(data){  
+								$('#guonei').html(data);
+						 } 
+					});	
+			}
+			if(num==2){
+				//ajax加载-地方
+				$.ajax({  
+					type:"get",  
+					url:"news_difang.html",  
+					dataType:"html",  
+					success:function(data){  
+								$('#difang').html(data);
+						 } 
+					});	
+			}
+			if(num==3){
+				//ajax加载-政策
+				$.ajax({  
+					type:"get",  
+					url:"news_zhengce.html",  
+					dataType:"html",  
+					success:function(data){  
+								$('#zhengce').html(data);
+						 } 
+					});	
+			}
+			//切换tabs
+			$("#nav-tabs a").eq(num).addClass("active").siblings().removeClass("active");
+			$(document).scrollTop(0);
+		}
+		/*Siwper幻灯片*/
+		var swiper = new Swiper('#slide01', {
+									pagination: '.swiper-pagination',
+									paginationClickable: true,
+									autoplay:2000
+								 });
+								 
+		
+})
+
+</script>
+<style>
+body,html{
+	overflow-x:hidden;
+}
+.tabs-content{
+	 width:100%;
+	 height:100%;
+}
+.tabs-content .tabs-box{
+	width:100%;
+	height:100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+.tabs-content .tabs-box > div{
+	width: 100%;
+	-webkit-flex-shrink: 0; /*铺满不平均分*/
+	flex-shrink: 0;
+}
+/*Swiper 幻灯片滑动*/
+.swiper-container {
+	height:auto;
+	background:#ddd;
+}
+.swiper-pagination{
+	top:auto;
+	bottom:5px !important;
+	padding-top:3px;
+	padding-bottom:3px;
+}
+.swiper-pagination-bullet-active {
+	background: #fff;
+}
+.swiper-slide article{
+  color:#fff;
+	position:absolute;
+	bottom:0;
+	left:0;
+	right:0;
+	z-index:9999;
+	background:rgba(0,0,0,.5);
+	text-align:left;
+	padding:5px 8px;
+}
+/*新闻tabs*/
+nav{
+	position:fixed;
+	background:#f9f9f9;
+	top:44px;
+	right:0;
+	left:0;
+	z-index:99999;
+	height:2.66rem;
+}
+nav > div{
+  display: -webkit-box;
+  display: -webkit-flex;
+	display:flex;
+}
+nav a{
+	display:block;
+	-webkit-box-flex:1;
+  -webkit-flex:1;
+	flex:1;
+	height:100%;
+	line-height:2.5rem;
+	text-align:center;
+		-webkit-transition: color .3s;
+	transition:color .3s ;
+	text-decoration:none;
+	color:#000;
+}
+nav a.active{
+  color:#4fc1e9;
+	text-decoration:none;
+}
+.nav-line{
+  display:block;
+	height:2px;
+	width:25%;
+	-webkit-transform:translate3d(0,0,0);
+	transform:translate3d(0,0,0);
+	-webkit-transition: -webkit-transform .3s;
+	transition: transform .3s ;
+	background:#4fc1e9;
+}
+
+</style>
+
+</head>
+<body class="e-bg">
+<!--头部-->
+<header class="header">
+  <a href="javascript:history.go(-1);" class="back" ></a>
+  <div class="sobar">
+    <input type="text" placeholder="关键字">
+    <i></i>
+  </div>
+</header>
+<!--//头部-->
+<!--导航tabs-->
+<nav class="nav-tabs" id="nav-tabs">
+	<div>
+    <a href="#" class="active">要闻</a>
+    <a href="#">国内</a>
+    <a href="#">地方</a>
+    <a href="#">政策</a>
+  </div>
+<span class="nav-line"></span>
+</nav>
+<!--//导航tabs-->
+
+<div class="blank-top"></div>
+<div class="blank-top"></div>
+<!--滑屏切换-->
+<div class="tabs-content">
+  <div class="tabs-box">
+    <div id="yaowen">
+      <!--幻灯片 swiper-->
+      <div class="swiper-container" id="slide01">
+          <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a href="newsDetail.html"><img src="img/news-slide01.jpg">
+                <article>城市的选择打工族的恶梦</article></a>
+              </div>
+              <div class="swiper-slide">
+                <a href="newsDetail.html"><img src="img/news-slide02.jpg">
+                <article>十大最值得旅行城市-吉隆坡</article></a>
+             </div>
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+      </div>
+      <!--//幻灯片 slider-->
+      <!--要闻-->
+      <div class="news-list">
+        <ul>
+          <li>
+            <div style="background-image:url(img/news.jpg)"></div>
+            <article>
+              <h3><a href="newsDetail.html" class="text-primary">如何把产品经理们的用户意 识表达出来</a></h3>
+              <small>新闻分类 | 2015-4-12 9:32</small>
+            </article>
+          </li>
+          <li>
+            <div style="background-image:url(img/news.jpg)"></div>
+            <article>
+              <h3>如何把产品经理们的用户意 识表达出来</h3>
+              <small>新闻分类 | 2015-4-12 9:32</small>
+            </article>
+          </li>
+          <li>
+            <div style="background-image:url(img/news.jpg)"></div>
+            <article>
+              <h3>如何把产品经理们的用户意 识表达出来</h3>
+              <small>新闻分类 | 2015-4-12 9:32</small>
+            </article>
+          </li>
+          <li>
+            <div style="background-image:url(img/news.jpg)"></div>
+            <article>
+              <h3>如何把产品经理们的用户意 识表达出来</h3>
+              <small>新闻分类 | 2015-4-12 9:32</small>
+            </article>
+          </li>
+          <li>
+            <div style="background-image:url(img/news.jpg)"></div>
+            <article>
+              <h3>如何把产品经理们的用户意 识表达出来</h3>
+              <small>新闻分类 | 2015-4-12 9:32</small>
+            </article>
+          </li>
+        </ul>
+      </div>
+      <div class="list-more"><a href="javascript:void(0)" class="text-gray">查看更多↓</a></div>
+      <!--//要闻-->
+    </div>
+    <div id="guonei">
+    	<!--国内-->
+      <div style="margin:100px 0 0; text-align:center;">
+      	<img src="img/loading.gif">加载中...
+      </div>
+      <!--//国内-->
+    </div>
+    <div id="difang">
+    	<!--地方-->
+      <div style="margin:100px 0 0; text-align:center;">
+      	<img src="img/loading.gif">加载中...
+      </div>
+      <!--//地方-->
+    </div>
+    <div id="zhengce">
+    	<!--政策-->
+      <div style="margin:100px 0 0; text-align:center;">
+      	<img src="img/loading.gif">加载中...
+      </div>
+      <!--//政策-->
+    </div>
+  </div>
+</div>
+<!--滑屏切换-->
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>王牌置业</title>
+<link rel="stylesheet" href="css/swiper.min.css" /> 
+<link rel="stylesheet" href="css/estate.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script src="js/swiper.min.js"></script> 
+<script>
+$(function(){
+	/*解决移动端active伪类效果*/
+	document.body.addEventListener('touchstart', function(){});
+	
+	/*Siwper幻灯片*/
+	var swiper = new Swiper('.swiper-container', {
+								pagination: '.swiper-pagination',
+								paginationClickable: true,
+								autoplay:2000
+							 });
+	//报名成功，定时关闭
+	$(".btn-join").on("click",function(){
+		$(".alert-tip").show();
+		setTimeout(closePop, 3000);
+	})
+	
+	function closePop(){
+			$(".alert-tip").fadeOut();
+	}
+})
+</script>
+</head>
+<body class="e-bg">
+<!--头部-->
+<header class="header">
+  <a href="javascript:history.go(-1);" class="back" ></a>
+	<a href="#" class="share pr"></a>
+  <h1>新闻中心</h1>
+</header>
+<!--//头部-->
+<div class="blank-top"></div>
+<div class="alert-tip">报名成功</div>
+<!--新闻详情-->
+<div class="newsDetail">
+  <h3 class="news-title">如何用互联网思维来卖辣条?</h3>
+  <div class="news-sub-title">
+    新闻分类    作者：房码在线
+    2015-11-11 9:23
+  </div>
+  <div class="news-content">
+    <p>据介绍，这次清理整顿紧紧围绕党在新形势下的强军目标，坚决贯彻习主席和中央军委关于依法治军</p>
+    <img src="img/newspic.jpg">
+    <p>从严治军、加强作风建设的一系列决策部署，牢固树立战斗力这个唯一的根本的标准，进一步摸清底数，严肃查究违规问题消除负面影响 改革创造条件。</p>
+  </div>
+</div>
+<!--//新闻详情-->
+<div class="main-sub">
+  <!--关键词-->
+  <div class="summary">
+    <dl>
+      <dt>关键词：</dt>
+      <dd>
+        <a href="#" class="text-primary uline">二手房</a>&nbsp;&nbsp;<a href="#" class="text-primary uline">政策</a>
+      </dd>
+    </dl>
+  </div>
+  <!--//关键词-->
+  <!--相关项目-->
+  <div class="object-show">
+  	<div class="object-tip">相关项目</div>
+    <!--幻灯片 swiper-->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+            	<div class="object-box">
+              	<div class="object-box-pic" style="background-image:url(img/newspic.jpg)"></div>
+                <div class="object-box-info">
+                	<h3>半月花园</h3>
+                  <small><label>福建福州</label> <label>福建福州</label></small>
+                  <span>楼盘促销新闻标题</span>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+            	<div class="object-box">
+              	<div class="object-box-pic" style="background-image:url(img/newspic.jpg)"></div>
+                <div class="object-box-info">
+                	<h3>金山明星</h3>
+                  <small><label>福建福州</label> <label>福建福州</label></small>
+                  <span>楼盘促销新闻标题</span>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+            	<div class="object-box">
+              	<div class="object-box-pic" style="background-image:url(img/newspic.jpg)"></div>
+                <div class="object-box-info">
+                	<h3>世欧王庄</h3>
+                  <small><label>福建福州</label> <label>福建福州</label></small>
+                  <span>楼盘促销新闻标题</span>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <!--//幻灯片 slider-->
+  </div>
+  <!--//相关项目-->
+  <!--公众号推荐-->
+  <div class="weixinhao">
+  	<h5>公众号推荐</h5>
+    <ul>
+    	<li>op大器晚成</li>
+    	<li>op大器晚成</li>
+    	<li>op大器晚成</li>
+    	<li>op大器晚成</li>
+    </ul>
+  </div>
+  <!--//公众号推荐-->
+  <!--下一条-->
+  <div class="summary">
+    <dl>
+      <dt>上一条：</dt>
+      <dd><a href="#" class="text-primary">泡沫的形成</a></dd>
+    </dl>
+    <dl>
+      <dt>下一条：</dt>
+      <dd><a href="#" class="text-primary">买房经验</a></dd>
+    </dl>
+  </div>
+  <!--//下一条-->
+  <!--报名-->
+  <div class="join-in">
+  	<ul>
+    	<li>
+      	<input type="text" placeholder="人名">
+      </li>
+    	<li class="fx2">
+      	<input type="text" placeholder="电话号码">
+      </li>
+    	<li>
+      	<a href="javascript:void(0)" class="btn-join">报名</a>
+      </li>
+    </ul>
+  </div>
+  <!--//报名-->
+</div>
+<div class="blank-footer"></div>
+<div class="blank-footer"></div>
+</body>
+</html>

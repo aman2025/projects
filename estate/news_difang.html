@@ -1,0 +1,68 @@
+<!--幻灯片 swiper-->
+<div class="swiper-container" id="slide03">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="img/news-slide01.jpg">
+          <article>地方新闻-图1</article>
+        </div>
+        <div class="swiper-slide">
+          <img src="img/news-slide02.jpg">
+          <article>地方新闻-图2</article>
+       </div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+</div>
+<!--//幻灯片 slider-->
+<!--地方-->  
+<div class="news-list">
+  <ul>
+    <li>
+      <div style="background-image:url(img/news.jpg)"></div>
+      <article>
+        <h3>地方新闻1</h3>
+        <small>新闻分类 | 2015-4-12 9:32</small>
+      </article>
+    </li>
+    <li>
+      <div style="background-image:url(img/news.jpg)"></div>
+      <article>
+        <h3>地方新闻2</h3>
+        <small>新闻分类 | 2015-4-12 9:32</small>
+      </article>
+    </li>
+    <li>
+      <div style="background-image:url(img/news.jpg)"></div>
+      <article>
+        <h3>地方新闻3</h3>
+        <small>新闻分类 | 2015-4-12 9:32</small>
+      </article>
+    </li>
+    <li>
+      <div style="background-image:url(img/news.jpg)"></div>
+      <article>
+        <h3>地方新闻4</h3>
+        <small>新闻分类 | 2015-4-12 9:32</small>
+      </article>
+    </li>
+    <li>
+      <div style="background-image:url(img/news.jpg)"></div>
+      <article>
+        <h3>地方新闻5</h3>
+        <small>新闻分类 | 2015-4-12 9:32</small>
+      </article>
+    </li>
+  </ul>
+</div>
+<div class="list-more"><a href="javascript:void(0)" class="text-gray">查看更多↓</a></div>
+<script>
+$(function(){
+/*Siwper幻灯片*/
+var swiper = new Swiper('#slide03', {
+							pagination: '.swiper-pagination',
+							paginationClickable: true,
+							autoplay:2000
+						 });
+});
+</script>
+

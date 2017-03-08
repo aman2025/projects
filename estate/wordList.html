@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>王牌置业</title>
+<link rel="stylesheet" href="css/estate.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script>
+$(function(){
+		/*解决移动端active伪类效果*/
+		document.body.addEventListener('touchstart', function(){});
+	  /*tabs*/
+		$.TabChange("tab1",1);
+})
+//tabs切换
+$.TabChange = function(obj,num){
+	$("li","#" + obj).each(function(index){
+			$(this).click(function(i){
+			 	$("div.tab_box" + num + " > div").eq(index).show().siblings().hide();
+				$(this).addClass("active").siblings().removeClass("active");
+			})													
+	})
+}
+</script>
+</head>
+<body class="e-bg">
+<!--头部-->
+<header class="header">
+  <a href="javascript:history.go(-1);" class="back" ></a>
+  <a href="#" class="more pr" ></a>
+  <div class="sobar">
+    <input type="text" placeholder="关键字">
+    <i></i>
+  </div>
+</header>
+<!--//头部-->
+<div class="blank-top"></div>
+<!--tabs-->
+<div class="tabs">
+	<ul id="tab1">
+  	<li class="active">搜索结查</li>
+  	<li>我的词条</li>
+  </ul>
+</div>
+<!--//tabs-->
+<div class="sub-title">共为您找到 <label class="text-primary">29</label> 个记录</div>
+<div class="tab_box1">
+	<div>
+    <div class="stage-item stage-single">
+      <dl>
+        <dt><span>房产证介绍</span></dt>
+      </dl>
+      <dl>
+        <dt><span>中介</span></dt>
+      </dl>
+      <dl>
+        <dt><span>南北通透</span></dt>
+      </dl>
+      <dl>
+        <dt><span>风水向</span></dt>
+      </dl>
+      <dl>
+        <dt><span>房产证介绍</span></dt>
+      </dl>
+      <dl>
+        <dt><span>中介</span></dt>
+      </dl>
+      <dl>
+        <dt><span>南北通透</span></dt>
+      </dl>
+      <dl>
+        <dt><span>风水向</span></dt>
+      </dl>
+    </div>
+  </div>
+  <div style="display:none">
+    <div class="stage-item stage-single">
+      <dl>
+        <dt><span>我的词条</span></dt>
+      </dl>
+      <dl>
+        <dt><span>我的词条</span></dt>
+      </dl>
+      <dl>
+        <dt><span>我的词条</span></dt>
+      </dl>
+      <dl>
+        <dt><span>我的词条</span></dt>
+      </dl>
+      <dl>
+        <dt><span>我的词条</span></dt>
+      </dl>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>王牌置业</title>
+<link rel="stylesheet" href="css/estate.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script>
+$(function(){
+	/*解决移动端active伪类效果*/
+	document.body.addEventListener('touchstart', function(){});
+})
+
+/*---------短信验证码-----------*/
+var InterValObj; //timer变量，控制时间
+var count = 60; //间隔函数，1秒执行
+var curCount;//当前剩余秒数
+
+function sendMessage() {
+	　curCount = count;
+　　//设置button效果，开始计时
+		 $("#btnSendCode").attr("disabled", "true");
+		 $("#btnSendCode").val(curCount + "秒后重发");
+		 InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+　　  //向后台发送处理数据
+		 /*$.ajax({
+		 　　type: "POST", //用POST方式传输
+		 　　dataType: "text", //数据格式:JSON
+		 　　url: 'Login.ashx', //目标地址
+		　　 data: "dealType=" + dealType +"&uid=" + uid + "&code=" + code,
+		　　 error: function (XMLHttpRequest, textStatus, errorThrown) { },
+		 　　success: function (msg){ }
+		 });*/
+}
+
+//timer处理函数
+function SetRemainTime() {
+						if (curCount == 0) {                
+								window.clearInterval(InterValObj);//停止计时器
+								$("#btnSendCode").removeAttr("disabled");//启用按钮
+								$("#btnSendCode").val("重新发送");
+						}
+						else {
+								curCount--;
+								$("#btnSendCode").val(curCount + "秒后重发");
+						}
+	}	
+</script>
+</head>
+<body>
+<!--头部-->
+<header class="header">
+	<a href="javascript:history.go(-1);" class="back" ></a>
+	<a href="register.html" class="btn-nav pr">快速注册</a>
+  <h1>忘记密码</h1>
+</header>
+<!--//头部-->
+<!--注册-->
+<div class="main-login">
+  <!--表单-->
+  <div class="login-form register-form">
+  	<ul>
+    	<li>
+      	<label>请输入您绑定的手机号码</label>
+      	<div class="register-phone">
+          <input type="text" id="phone" placeholder="手机号码">
+          <input type="button" class="btn btn-getcode" id="btnSendCode" onclick="sendMessage()" value="获取验证码">
+        </div>  
+      </li>
+    	<li>
+      	<label>短信验证码</label>
+      	<div>
+          <input type="text" id="auth-code" placeholder="">
+        </div>  
+      </li>
+    </ul>
+  </div>  
+  <a href="resetPsw.html" class="btn btn-login" id="btn-login">下一步</a>
+  <!--//表单-->
+  <!--第三方登录-->
+  <div class="login-other">
+  	<span>第三方登录:</span>
+  	<a href="#" class="site01"></a>
+  	<a href="#" class="site02"></a>
+  	<a href="#" class="site03"></a>
+  	<a href="#" class="site04"></a>
+  	<a href="#" class="site05"></a>
+  	<a href="#" class="site06"></a>
+  </div>  
+  <!--//第三方登录-->
+</div>  
+<!--//注册-->
+</body>
+</html>

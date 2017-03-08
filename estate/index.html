@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title>王牌置业</title>
+<link rel="stylesheet" href="css/estate.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script>
+$(function(){
+	/*解决移动端active伪类效果*/
+	document.body.addEventListener('touchstart', function(){});
+})
+</script>
+<style>
+.profile-list li{
+	color:#000
+}
+.profile-list li label{
+	color:#aaa
+}
+</style>
+</head>
+<body class="e-bg">
+<!--头部-->
+<header class="header">
+  <a href="javascript:history.go(-1);" class="back" ></a>
+  <h1>页面展示</h1>
+</header>
+<!--//头部-->
+<!--头像信息-->
+<div class="profile">
+	<div class="profile-pic">
+    <a href="idVerify02.html"><div style="background-image:url(img/user-pic.jpg)"></div></a>  
+  </div>
+  <div class="profile-name">
+  	<h5>王牌置业项目</h5>
+    <span>html5+css3+jquery，兼容ios，android，腾讯x5内核</span>
+  </div>
+</div>  
+<!--//头像信息-->
+<div class="profile-list">
+	<ul>
+  	<a href="idVerify02.html"><li><span>身份验证</span><label>要点：图片上传预览</label></li></a>
+  	<a href="newsCenter.html"><li><span>新闻中心</span><label>要点：tabs手势滑动切换</label></li></a>
+  	<a href="selectCity.html"><li><span>城市选择</span><label>定位城市-首字母导航</label></li></a>
+  	<a href="studyProgress.html"><li><span>闯关列表</span></li></a>
+  	<a href="wordList.html"><li><span>词条管理</span><label>要点：tabs切换</label></li></a>
+  	<a href="gameSuccess.html"><li><span>分享到...</span><label>要点：仿ios底部弹出分享</label></li></a>
+  </ul>
+</div>
+</body>
+</html>
