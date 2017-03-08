@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title></title>
+<link rel="stylesheet" href="css/greennet.css"> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script type="text/javascript">
+$(function(){
+	//弹窗-活动结束
+	$("#gameover").click(function(){
+		$("#pop-end").show();	
+	})
+	
+	//弹窗-分享好友
+	$("#winner").click(function(){
+		$("#pop-win").show();	
+	})
+	//弹窗-分享好友
+	$("#share").click(function(){
+		$("#pop-share").show();	
+	})
+	//弹窗-分享好友
+	$(".pop-btn-share").click(function(){
+		$("#pop-share").hide();	
+	})
+});
+</script>
+</head>
+<body>
+	<div class="blank01"></div>
+	<a href="register.html" class="go"></a>
+	<div class="blank02"></div>
+  <div class="btn-wrap">
+      <a href="rule.html" class="btn-rule"></a>
+      <a href="gain.html" class="btn-gain"></a>
+      <a id="share" class="btn-share"></a>
+  </div>
+  
+<!--
+  <button  id="gameover">活动结束</button>
+  <button  id="winner">中奖通知</button>
+-->
+<!--弹窗-活动结束--> 
+<div class="pop-mask" id="pop-end">
+	<div class="pop-box">
+  	<div class="pop-header">活动结束</div>
+    <div class="pop-tip"></div>
+		<div class="pop-content">
+			本期福利已发送完成， 欢迎下次赶早哦！
+		</div>
+    <button class="pop-btn-iknow"></button>
+		<div class="pop-bg end"></div>
+  </div>
+</div>
+<!--弹窗-中奖通知--> 
+<div class="pop-mask" id="pop-win">
+	<div class="pop-box">
+  	<div class="pop-header">中奖通知</div>
+    <div class="pop-tip"></div>
+		<div class="pop-content">
+			恭喜您获得本期奖品，赶紧快马加鞭去领走 你的奖品吧！
+		</div>
+    <button class="pop-btn-get"></button>
+		<div class="pop-bg win"></div>
+  </div>
+</div>
+<!--弹窗-分享好友--> 
+<div class="pop-mask" id="pop-share">
+	<div class="pop-share">
+		<div class="pop-share-content">
+			<p>快点从这里跑进去</p>
+      <p>把这个福利好消息</p>
+      <p>告诉你的好朋友吧！</p>
+      <button class="pop-btn-share"></button>
+		</div>
+    
+  </div>
+</div>
+ 
+</body>
+</html>

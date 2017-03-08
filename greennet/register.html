@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes">
+<title></title>
+<link rel="stylesheet" href="css/greennet.css"> 
+<link rel="stylesheet" href="css/swiper.min.css" /> 
+<script src="js/jquery-2.1.4.min.js"></script> 
+<script src="js/swiper.min.js"></script> 
+<script type="text/javascript">
+$(function(){
+	/*Siwper*/
+	var swiper = new Swiper('#slide01', {
+						pagination: '.swiper-pagination',
+						autoplay:2000
+					 });
+					 
+	/*Siwper*/
+		var swiper2 = new Swiper('#slide02', {
+						pagination: '.swiper-pagination',
+						autoplay:2000
+					 });
+	$("#register").click(function(){
+		$(".pop-mask").show();	
+	})
+					 
+});
+</script>
+<script type="text/javascript"> 
+ var SysSecond; 
+ var InterValObj; 
+  
+ $(document).ready(function() { 
+  SysSecond = parseInt($("#remainSeconds").html()); //这里获取倒计时的起始时间 
+  InterValObj = window.setInterval(SetRemainTime, 1000); //间隔函数，1秒执行 
+ }); 
+ 
+ //将时间减去1秒，计算天、时、分、秒 
+ function SetRemainTime() { 
+  if (SysSecond > 0) { 
+   SysSecond = SysSecond - 1; 
+   var second = Math.floor(SysSecond % 60);             // 计算秒     
+   var minite = Math.floor((SysSecond / 60) % 60);      //计算分 
+   var hour = Math.floor((SysSecond / 3600) % 24);      //计算小时 
+   var day = Math.floor((SysSecond / 3600) / 24);        //计算天 
+ 
+   $("#days").html(day);
+   $("#hours").html(hour);
+   $("#minutes").html(minite);
+   $("#seconds").html(second);
+  } else {//剩余时间小于或等于0的时候，就停止间隔函数 
+   window.clearInterval(InterValObj); 
+   //这里可以添加倒计时时间为0后需要执行的事件 
+  } 
+ } 
+</script> 
+<style>
+body,html{
+  height:100%;
+}
+</style>
+</head>
+<body class="register-bg">
+    <div id="remainSeconds" style="display:none">360000</div> 
+	<div class="blank06"></div>
+	<div class="register-title">本期开奖倒计时</div>
+	<div class="time-wrap">
+		<div class="time">
+			<ul>
+				<li><span id="days"></span><label>天</label></li>
+				<li><span id="hours"></span><label>时</label></li>
+				<li><span id="minutes"></span><label>分</label></li>
+				<li><span id="seconds"></span><label>秒</label></li>
+			</ul>
+		</div>
+	</div>
+	<!--轮播图-->
+	<div class="slide-wrap">
+	<a href="prize.html">
+	<!--swipe-->
+	<section class="swiper-container" id="slide01">
+			<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<img src="images/banner01.png">
+					</div>
+					<div class="swiper-slide">
+						<img src="images/banner02.png">
+					</div>
+			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
+	</section>
+	<!--//swipe-->
+	</a>
+	</div>
+	<!--//轮播图-->
+	<div class="gift-wrap">
+		<i></i><a href="prize.html">点击了解奖品详情</a>
+	</div>
+	<!--上期中奖名单-->
+	<div class="register-name">
+		<div class="register-name-title"><a href="prize.html">上期中奖名单</a></div>
+    <!--swipe-->
+    <section class="swiper-container register-wrap" id="slide02" >
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="register-name-list">
+                  <ul>
+                    <li><i style="background-image:url(images/avatar.png)"></i>用户名1</li>
+                    <li><i style="background-image:url(images/avatar.png)"></i>用户名2</li>
+                    <li><i style="background-image:url(images/avatar.png)"></i>用户名3</li>
+                    <li><i style="background-image:url(images/avatar.png)"></i>用户名4</li>
+                    <li><i style="background-image:url(images/avatar.png)"></i>用户名5</li>
+                  </ul>
+                </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="register-name-list">
+                <ul>
+                  <li><i style="background-image:url(images/avatar.png)"></i>用户名6</li>
+                  <li><i style="background-image:url(images/avatar.png)"></i>用户名7</li>
+                  <li><i style="background-image:url(images/avatar.png)"></i>用户名8</li>
+                  <li><i style="background-image:url(images/avatar.png)"></i>用户名9</li>
+                  <li><i style="background-image:url(images/avatar.png)"></i>用户名10</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </section>
+    <!--//swipe-->
+		<div class="register-gain">
+			<a href="contact.html" class="btn-register" ></a>
+			目前已有1000人报名
+		</div>
+	</div>
+	<!--//上期中奖名单-->
+<!--弹出窗口--> 
+<div class="pop-mask">
+	<div class="pop-box">
+  	<div class="pop-header">报名成功</div>
+    <div class="pop-tip"></div>
+		<div class="pop-content">
+			注意我们的开奖信息，人品爆发的话很容易中奖的哦！
+		</div>
+		<div class="pop-bg"></div>
+  </div>
+</div>
+<div class="blank06"></div>
+</body>
+</html>
